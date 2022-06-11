@@ -1,7 +1,3 @@
-# ---------------------------------------------------------------------------
-# Provider Config
-# ---------------------------------------------------------------------------
-
 provider "aws" {
   alias  = "aws"
   region = "us-east-1"
@@ -11,7 +7,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      author     = "Cloud Grupo 1"
+      author     = "MHS Grupo 1"
       version    = 1
       university = "ITBA"
       subject    = "Cloud Computing"
