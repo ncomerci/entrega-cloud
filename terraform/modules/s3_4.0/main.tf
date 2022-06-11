@@ -63,3 +63,23 @@ resource "aws_s3_bucket_logging" "this" {
   target_bucket = aws_s3_bucket.log_bucket.id
   target_prefix = "log/"
 }
+
+
+# 7 - Medical Records 
+
+resource "aws_s3_bucket" "medical_records" {
+  bucket = "mhs-medical-records-itba-cp-g1"
+}
+
+# TODO foreach
+resource "aws_s3_bucket_object" "medical_record_radiografia" {
+    key    = "user1/radiografia-mano.jpg"
+    bucket = aws_s3_bucket.medical_records.id
+    source = "../resources/images/radiografia-mano.jpg"
+}
+
+resource "aws_s3_bucket_object" "medical_record_pdf" {
+    key    = "user1/medical-record.pdf"
+    bucket = aws_s3_bucket.medical_records.id
+    source = "../resources/docs/medical_record.pdf"
+}
