@@ -1,2 +1,2 @@
 def my_lambda(): 
-    pass
+    print("la lambda funca")

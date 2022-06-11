@@ -21,10 +21,5 @@ locals {
     www-website = {
       bucket_name = "www.${local.bucket_name}"
     }
-
-    # 3 - Logs
-    #logs = {
-    #  bucket_name = "mhs-logs"
-    #}
   }
 }
