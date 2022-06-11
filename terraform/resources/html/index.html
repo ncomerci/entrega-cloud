@@ -1,5 +1,27 @@
 <html>
+    <head>
+        <title>MHS</title>
+        <div align="center">
+            <!-- Esta es mi función -->
+            <script>
+                function getMedicalRecord() {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("img-medical-record").src = this.responseText;
+                        }
+                    };
+
+                xhttp.open("GET", ${ENDPOINT}, true);
+                xhttp.send();   
+                }
+            </script>
+        </div>
+    </head>
     <body>
         Montegrande Health Care System 
+        <img id="img-medical-record"> 
+
+        </img>
     </body>
 </html>
