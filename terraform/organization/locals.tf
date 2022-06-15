@@ -1,6 +1,7 @@
 locals {
   bucket_name = "mhs.com"
   path        = "../resources"
+  s3_origin_id = "originId"
 
   s3 = {
 
