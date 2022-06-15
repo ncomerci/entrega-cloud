@@ -1,7 +1,7 @@
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     #domain_name = "www.mhs.com.s3-website-us-east-1.amazonaws.com" 
-    domain_name = module.s3["website"].website_endpoint
+    domain_name = module.s3["www-website"].website_endpoint
     #domain_name = module.s3["website"].bucket_regional_domain_name
     
     origin_id   = local.s3_origin_id
