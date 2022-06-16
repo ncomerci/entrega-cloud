@@ -15,6 +15,10 @@ locals {
           filename     = "html/error.html"
           content_type = "text/html"
         }
+        css = {
+          filename     = "html/main.css"
+          content_type = "text/html"
+        }
       }
     }
 
