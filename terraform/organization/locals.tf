@@ -1,5 +1,5 @@
 locals {
-  bucket_name = "mhs.com"
+  bucket_name = "test-mhs.com"
   path        = "../resources"
  
 

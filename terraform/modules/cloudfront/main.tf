@@ -22,7 +22,7 @@ resource "aws_cloudfront_distribution" "s3" {
     }
   }
 
-  enabled             = true
+  enabled = true
   #is_ipv6_enabled     = true
   #comment             = "Some comment"
   default_root_object = "index.html"
@@ -60,16 +60,16 @@ resource "aws_cloudfront_distribution" "s3" {
   #  allowed_methods  = ["GET", "HEAD", "OPTIONS"]
   #  cached_methods   = ["GET", "HEAD", "OPTIONS"]
   #  target_origin_id = local.s3_origin_id
-#
+  #
   #  forwarded_values {
   #    query_string = false
   #    headers      = ["Origin"]
-#
+  #
   #    cookies {
   #      forward = "none"
   #    }
   #  }
-#
+  #
   #  min_ttl                = 0
   #  default_ttl            = 86400
   #  max_ttl                = 31536000
@@ -83,15 +83,15 @@ resource "aws_cloudfront_distribution" "s3" {
   #  allowed_methods  = ["GET", "HEAD", "OPTIONS"]
   #  cached_methods   = ["GET", "HEAD"]
   #  target_origin_id = local.s3_origin_id
-#
+  #
   #  forwarded_values {
   #    query_string = false
-#
+  #
   #    cookies {
   #      forward = "none"
   #    }
   #  }
-#
+  #
   #  min_ttl                = 0
   #  default_ttl            = 3600
   #  max_ttl                = 86400
