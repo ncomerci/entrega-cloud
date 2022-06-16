@@ -1,3 +1,14 @@
 locals {
-  table_key = "testId"
+  
+  table = { 
+    users = {
+      key = "user-id"
+      name = "users-table"
+    }
+    appointments = {
+      key = "appointment-id"
+      name = "appointments-table"
+    }
+
+  }
 }

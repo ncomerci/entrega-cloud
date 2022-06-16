@@ -49,7 +49,7 @@ resource "aws_s3_object" "this" {
 # 6 - Log bucket
 
 resource "aws_s3_bucket" "log_bucket" {
-  bucket = "test-mhs-logs-itba-cp-g1"
+  bucket = "mhs-logs-itba-cp-g1"
 }
 
 resource "aws_s3_bucket_acl" "log_bucket_acl" {

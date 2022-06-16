@@ -1,8 +1,8 @@
-variable "table_name" {
-  type = string
-  default = "mhs-db"
-  description = "DB table name"
-}
+#variable "user_table_name" {
+#  type = string
+#  default = "user-db"
+#  description = "DB Users"
+#}
 
 variable "read_capacity" {
   type = number
@@ -14,7 +14,7 @@ variable "write_capacity" {
   default = 30
 }
 
-variable "table_key" {
-  type = string
-  default = "testId"
-}
+#variable "table_key" {
+#  type = string
+#  default = "testId"
+#}
