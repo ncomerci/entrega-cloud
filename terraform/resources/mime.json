@@ -1,0 +1,6 @@
+{
+  ".css": "text/css",
+  ".scss": "text/x-scss",
+  ".html": "text/html",
+  ".js": "application/javascript"
+}

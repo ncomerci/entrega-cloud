@@ -7,11 +7,11 @@ variable "bucket_name" {
   description = "The name of the bucket. Must be less than or equal to 63 characters in length."
 }
 
-variable "objects" {
-  type        = map(any)
-  description = ""
-  default     = {}
-}
+# variable "objects" {
+#   type        = map(any)
+#   description = ""
+#   default     = {}
+# }
 
 variable "block_public_access" {
   type        = bool
@@ -23,4 +23,10 @@ variable "bucket_acl" {
   type        = string
   default     = "private" 
   description = "The canned ACL to apply. Valid values are private, public-read, public-read-write, aws-exec-read, authenticated-read, and log-delivery-write. Defaults to private. For more information about these settings, see the AWS S3 documentation: https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl"
+}
+
+variable "mime_types" {
+  type = map
+  description = "Mime types"
+  
 }

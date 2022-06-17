@@ -11,6 +11,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script>
+			function getMedicalRecords() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("replace").innerHTML = this.responseText;
+					}
+				};
+
+			xhttp.open("GET", "${ENDPOINT}/resource", true);
+			xhttp.send();   
+			}
+		</script>
 	</head>
 	<body class="is-preload">
 
@@ -24,8 +37,10 @@
 							<p class="major">
 								The saying “laughter is the best medicine” is believed to have originated. But it's more than a proverb. The power of laughter has long been recognized by both medical and spiritual experts</p>
 							<ul class="actions stacked">
-								<li><a href="#first" class="button big wide smooth-scroll-middle">Get Started</a></li>
+								<button onclick="getMedicalRecords()"><li><a href="#first" class="button big wide smooth-scroll-middle">Get Started</a></li></button>
 							</ul>
+							<h1><span id="replace"></span></h1>
+            
 						</div>
 						<div class="image">
 							<img src="images/banner.jpg" alt="" />
