@@ -42,7 +42,7 @@ resource "aws_s3_bucket_website_configuration" "www" {
     bucket = aws_s3_bucket.www.id
     redirect_all_requests_to {
       protocol = "http"
-      host_name = aws_s3_bucket.website.website_endpoint
+      host_name = aws_s3_bucket.website.id
     }
 }
 resource "aws_s3_bucket_policy" "www" {

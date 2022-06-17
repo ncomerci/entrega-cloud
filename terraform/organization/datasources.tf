@@ -11,8 +11,5 @@ data "aws_caller_identity" "current" {
 }
 
 data "template_file" "userdata" {
-  template = file("../resources/html/index.html")
-  vars = {
-    ENDPOINT = "${module.apigw.invoke_url}"
-  }
+  template = templatefile("../resources/html/index.html", {ENDPOINT = "${module.apigw.invoke_url}"})
 }
