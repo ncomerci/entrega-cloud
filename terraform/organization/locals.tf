@@ -1,5 +1,5 @@
 locals {
-  bucket_name = "mhs.com"
+  bucket_name = "montegrande-health-system.com"
   path        = "../resources"
  
 
@@ -27,4 +27,6 @@ locals {
       bucket_name = "www.${local.bucket_name}"
     }
   }
+
+  mime_types = jsondecode(file("${local.path}/mime.json"))
 }

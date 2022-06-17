@@ -2,23 +2,14 @@
 # Amazon S3
 # ------------------------------------------------------------------------------
 
-# 1 - S3 bucket
-resource "aws_s3_bucket" "this" {
+# 1 - Static Website Bucket
+resource "aws_s3_bucket" "website" {
     bucket              = var.bucket_name
     object_lock_enabled = false
 }
 
-# 2 -Bucket policy
-resource "aws_s3_bucket_policy" "this" {
-    count = var.objects != {} ? 1 : 0
-
-    bucket = aws_s3_bucket.this.id
-    policy = data.aws_iam_policy_document.this.json
-}
-
-# 3 -Website configuration
-resource "aws_s3_bucket_website_configuration" "this" {
-    bucket = aws_s3_bucket.this.id
+resource "aws_s3_bucket_website_configuration" "website" {
+    bucket = aws_s3_bucket.website.id
 
     index_document {
         suffix = "index.html"
@@ -29,9 +20,40 @@ resource "aws_s3_bucket_website_configuration" "this" {
     }
 }
 
-# 4 - Access Control List
-resource "aws_s3_bucket_acl" "this" {
-    bucket = aws_s3_bucket.this.id
+resource "aws_s3_bucket_policy" "website" {
+    # count = var.objects != {} ? 1 : 0
+
+    bucket = aws_s3_bucket.website.id
+    policy = data.aws_iam_policy_document.website.json
+}
+
+resource "aws_s3_bucket_acl" "website" {
+    bucket = aws_s3_bucket.website.id
+    acl    = var.bucket_acl
+}
+
+# www redirecto to mhs.com
+resource "aws_s3_bucket" "www" {
+    bucket              = "www.${var.bucket_name}"
+    object_lock_enabled = false
+}
+
+resource "aws_s3_bucket_website_configuration" "www" {
+    bucket = aws_s3_bucket.www.id
+    redirect_all_requests_to {
+      protocol = "http"
+      host_name = aws_s3_bucket.website.website_endpoint
+    }
+}
+resource "aws_s3_bucket_policy" "www" {
+    # count = var.objects != {} ? 1 : 0
+
+    bucket = aws_s3_bucket.www.id
+    policy = data.aws_iam_policy_document.www.json
+}
+ 
+resource "aws_s3_bucket_acl" "www" {
+    bucket = aws_s3_bucket.www.id
     acl    = var.bucket_acl
 }
 
@@ -46,26 +68,40 @@ resource "aws_s3_bucket_acl" "this" {
 #    storage_class = try(each.value.tier, "STANDARD")
 #}
 
-# 6 - Log bucket
+# Upload frontend assets 
+# TODO PATH RELATIVO
+resource "aws_s3_object" "this" {
+  for_each = fileset("/home/scott/cloud-computing/terraform/resources/html", "**/*.*")
 
-resource "aws_s3_bucket" "log_bucket" {
+  bucket = aws_s3_bucket.website.id
+  key    = each.value
+
+  source = "/home/scott/cloud-computing/terraform/resources/html/${each.value}"
+  # etag makes the file update when it changes; see https://stackoverflow.com/questions/56107258/terraform-upload-file-to-s3-on-every-apply
+  etag   = filemd5("/home/scott/cloud-computing/terraform/resources/html/${each.value}")
+  content_type = lookup(var.mime_types, regex("\\.[^.]+$", each.value), null)
+}
+
+# Log bucket
+
+resource "aws_s3_bucket" "logs" {
   bucket = "mhs-logs-itba-cp-g1"
 }
 
-resource "aws_s3_bucket_acl" "log_bucket_acl" {
-  bucket = aws_s3_bucket.log_bucket.id
+resource "aws_s3_bucket_acl" "logs" {
+  bucket = aws_s3_bucket.logs.id
   acl    = "log-delivery-write"
 }
 
 resource "aws_s3_bucket_logging" "this" {
-  bucket = aws_s3_bucket.this.id
+  bucket = aws_s3_bucket.website.id
 
-  target_bucket = aws_s3_bucket.log_bucket.id
+  target_bucket = aws_s3_bucket.logs.id
   target_prefix = "log/"
 }
 
 
-# 7 - Medical Records 
+# Medical Records 
 
 resource "aws_s3_bucket" "medical_records" {
   bucket = "mhs-medical-records-itba-cp-g1"
@@ -82,15 +118,4 @@ resource "aws_s3_bucket_object" "medical_record_pdf" {
     key    = "user1/medical-record.pdf"
     bucket = aws_s3_bucket.medical_records.id
     source = "../resources/docs/medical_record.pdf"
-}
-
-# TODO PATH RELATIVO
-resource "aws_s3_object" "this" {
-  for_each = fileset("/home/eugenia/cloud/cloud-computing/terraform/resources/html", "**/*.*")
-
-  bucket = aws_s3_bucket.this.id
-  key    = each.value
-  source = "/home/eugenia/cloud/cloud-computing/terraform/resources/html/${each.value}"
-  # etag makes the file update when it changes; see https://stackoverflow.com/questions/56107258/terraform-upload-file-to-s3-on-every-apply
-  etag   = filemd5("/home/eugenia/cloud/cloud-computing/terraform/resources/html/${each.value}")
 }
