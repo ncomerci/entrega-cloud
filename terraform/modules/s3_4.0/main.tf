@@ -69,16 +69,15 @@ resource "aws_s3_bucket_acl" "www" {
 #}
 
 # Upload frontend assets 
-# TODO PATH RELATIVO
 resource "aws_s3_object" "this" {
-  for_each = fileset("/home/scott/cloud-computing/terraform/resources/html", "**/*.*")
+  for_each = fileset("../resources/html", "**/*.*")
 
   bucket = aws_s3_bucket.website.id
   key    = each.value
 
-  source = "/home/scott/cloud-computing/terraform/resources/html/${each.value}"
+  source = "../resources/html/${each.value}"
   # etag makes the file update when it changes; see https://stackoverflow.com/questions/56107258/terraform-upload-file-to-s3-on-every-apply
-  etag   = filemd5("/home/scott/cloud-computing/terraform/resources/html/${each.value}")
+  etag   = filemd5("../resources/html/${each.value}")
   content_type = lookup(var.mime_types, regex("\\.[^.]+$", each.value), null)
 }
 
