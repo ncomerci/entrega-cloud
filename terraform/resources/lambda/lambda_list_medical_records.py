@@ -6,7 +6,7 @@ def main (event, context):
 		"headers": {
 			"Access-Control-Allow-Origin": "*",
 		},
-		"body": "El lab ha sido finalizado correctamente"
+		"body": "Esto deberia pegarle a S3 y agarrar todos los medical records"
 	}
 
 	return resp
