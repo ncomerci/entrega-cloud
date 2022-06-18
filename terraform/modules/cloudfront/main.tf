@@ -35,6 +35,8 @@ resource "aws_cloudfront_distribution" "s3" {
       origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
+ 
+  web_acl_id = var.web_acl_arn
 
   enabled = true
   #is_ipv6_enabled     = true
