@@ -14,4 +14,5 @@ provider "aws" {
       created-by = "terraform"
     }
   }
+  s3_use_path_style = true
 }

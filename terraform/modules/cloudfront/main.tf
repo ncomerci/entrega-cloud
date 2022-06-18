@@ -22,6 +22,20 @@ resource "aws_cloudfront_distribution" "s3" {
     }
   }
 
+  origin {
+    #domain_name = replace(aws_api_gateway_deployment.deployment.invoke_url, "/^https?://([^/]*).*/", "$1")
+    domain_name = var.api_domain_name
+    origin_id   = "apigw"
+    origin_path = "/production"
+
+    custom_origin_config {
+      http_port              = 80
+      https_port             = 443
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols   = ["TLSv1.2"]
+    }
+  }
+
   enabled = true
   #is_ipv6_enabled     = true
   #comment             = "Some comment"
