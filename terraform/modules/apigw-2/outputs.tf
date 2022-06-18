@@ -25,5 +25,5 @@ output "domain_name" {
 
 output "name" {
     description = "API GW name"
-    value = aws_api_gateway_stage.this.name
+    value = aws_api_gateway_rest_api.this.name
 }
