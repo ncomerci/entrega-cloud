@@ -4,10 +4,10 @@
 
 module "cognito" {
     source = "../modules/cognito"
-    pool_name = "pool_mhs"
-    domain_name = "mhs-g1"
+    pool_name = "mhs-user-pool"
+    domain_name = "montegrande-health-system"
     client_name = "mhs-client"
-    redirect_uri = "https://www.google.com/"
+    redirect_uri = local.bucket_name
     providers = {
         aws = aws.aws
     }

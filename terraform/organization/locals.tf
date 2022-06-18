@@ -1,5 +1,5 @@
 locals {
-  bucket_name = "testeuge-montegrande-health-system.com"
+  bucket_name = "montegrande-health-system.bytedev.com.ar"
   path        = "../resources"
 
   s3 = {
