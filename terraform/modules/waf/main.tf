@@ -12,23 +12,37 @@ resource "aws_wafv2_web_acl" "this" {
   }
 
   rule {
-    name     = "owasp-rule"
+    name     = "rule-1"
     priority = 1
 
-    action {
-      block {}
+    override_action {
+      count {}
     }
 
     statement {
       managed_rule_group_statement {
-        vendor_name = "AWS"
         name        = "AWSManagedRulesCommonRuleSet"
+        vendor_name = "AWS"
+
+        excluded_rule {
+          name = "SizeRestrictions_QUERYSTRING"
+        }
+
+        excluded_rule {
+          name = "NoUserAgent_HEADER"
+        }
+
+        scope_down_statement {
+          geo_match_statement {
+            country_codes = ["US", "NL"]
+          }
+        }
       }
     }
 
     visibility_config {
       cloudwatch_metrics_enabled = false
-      metric_name                = "owasp-rule-metrics"
+      metric_name                = "friendly-rule-metric-name"
       sampled_requests_enabled   = false
     }
   }

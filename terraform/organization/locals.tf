@@ -1,8 +1,6 @@
 locals {
-  bucket_name = "montegrande-health-system.com"
+  bucket_name = "testeuge-montegrande-health-system.com"
   path        = "../resources"
-  
-  test = "euge"
 
   s3 = {
 
