@@ -4,15 +4,9 @@
 
 resource "aws_cloudfront_distribution" "s3" {
   origin {
-    #domain_name = "www.mhs.com.s3-website-us-east-1.amazonaws.com" 
-    #domain_name = module.s3["www-website"].website_endpoint
-    #domain_name = module.s3["website"].bucket_regional_domain_name
+    
     domain_name = var.domain_name
     origin_id   = local.s3_origin_id
-
-    #s3_origin_config {
-    #  origin_access_identity = "origin-access-identity/cloudfront/ABCDEFG1234567"
-    #}
 
     custom_origin_config {
       http_port              = "80"
@@ -23,7 +17,7 @@ resource "aws_cloudfront_distribution" "s3" {
   }
 
   origin {
-    #domain_name = replace(aws_api_gateway_deployment.deployment.invoke_url, "/^https?://([^/]*).*/", "$1")
+    
     domain_name = var.api_domain_name
     origin_id   = "apigw"
     origin_path = "/production"
@@ -39,8 +33,7 @@ resource "aws_cloudfront_distribution" "s3" {
   web_acl_id = var.web_acl_arn
 
   enabled = true
-  #is_ipv6_enabled     = true
-  #comment             = "Some comment"
+ 
   default_root_object = "index.html"
 
   #logging_config {
@@ -48,9 +41,7 @@ resource "aws_cloudfront_distribution" "s3" {
   #  bucket          = "mhs-logs-itba-cp-g1"
   #  prefix          = "myprefix"
   #}
-
-  #aliases = ["mhs.com"]
-
+ 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
