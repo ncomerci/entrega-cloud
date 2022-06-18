@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------
 
 module "apigw" { 
-  source = "../modules/apigw"
+  source = "../modules/apigw-2"
 
   providers = {
     aws = aws.aws

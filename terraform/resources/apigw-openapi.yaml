@@ -1,0 +1,13 @@
+openapi: "3.0.1"
+info:
+  title: "APIGW-MHS"
+  description: "MHS API Rest"
+  version: "2022-06-18T15:47:00Z"
+paths:
+  /medical-records:
+    get:
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        uri: "${lambda_identity_arn}"

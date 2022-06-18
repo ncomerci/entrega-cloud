@@ -1,5 +1,5 @@
 locals {
-  bucket_name = "itba-montegrande-health-system.com"
+  bucket_name = "montegrande-health-system.com"
   path        = "../resources"
   
   test = "euge"
