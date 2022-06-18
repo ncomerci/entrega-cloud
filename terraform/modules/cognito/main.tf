@@ -1,6 +1,6 @@
 resource "aws_cognito_user_pool" "this" {
-    name = var.pool_name
-
+    name    = var.pool_name
+ 
     alias_attributes = [ 
         "email",
         "preferred_username", ]
@@ -11,6 +11,7 @@ resource "aws_cognito_user_pool" "this" {
         require_symbols = false
         require_numbers = true
         require_uppercase = true
+        temporary_password_validity_days = 7
     }
 
     account_recovery_setting {
@@ -29,18 +30,22 @@ resource "aws_cognito_user_pool" "this" {
         email_subject = "Verifque su cuenta"
     }
 
+    auto_verified_attributes             = ["email"]
+
 }
 
 resource "aws_cognito_user_pool_client" "this" {
     name = var.client_name
-    user_pool_id = aws_cognito_user_pool.this.id
+    user_pool_id                         = aws_cognito_user_pool.this.id
 
-    callback_urls                        = ["https://${var.redirect_uri}"]
+    callback_urls                        = ["https://${var.redirect_uri}/"]
 
     allowed_oauth_flows_user_pool_client = true
     allowed_oauth_flows                  = ["code"]
-    allowed_oauth_scopes                 = ["email", "openid"]
+    allowed_oauth_scopes                 = ["email", "openid", "phone"]
     supported_identity_providers         = ["COGNITO"]
+
+    
 }
 
 resource "aws_cognito_user_pool_domain" "this" {

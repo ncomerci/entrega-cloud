@@ -22,3 +22,8 @@ output "domain_name" {
     description = "API GW domain_name"
     value = replace(aws_api_gateway_stage.this.invoke_url, "/^https?://([^/]*).*/", "$1")
 }
+
+output "name" {
+    description = "API GW name"
+    value = aws_api_gateway_stage.this.name
+}
