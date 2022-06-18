@@ -1,4 +1,4 @@
-resource "aws_cognito_user_pool" "pool" {
+resource "aws_cognito_user_pool" "this" {
     name = var.pool_name
 
     alias_attributes = [ 
@@ -31,11 +31,11 @@ resource "aws_cognito_user_pool" "pool" {
 
 }
 
-resource "aws_cognito_user_pool_client" "user_client" {
+resource "aws_cognito_user_pool_client" "this" {
     name = var.client_name
-    user_pool_id = aws_cognito_user_pool.pool.id
+    user_pool_id = aws_cognito_user_pool.this.id
 
-    callback_urls                        = ["https://itba-montegrande-health-system.com.s3-website-us-east-1.amazonaws.com/"]
+    callback_urls                        = ["https://${var.redirect_uri}"]
 
     allowed_oauth_flows_user_pool_client = true
     allowed_oauth_flows                  = ["code"]
@@ -43,7 +43,7 @@ resource "aws_cognito_user_pool_client" "user_client" {
     supported_identity_providers         = ["COGNITO"]
 }
 
-resource "aws_cognito_user_pool_domain" "cognito_domain" {
+resource "aws_cognito_user_pool_domain" "this" {
     domain       = var.domain_name
-    user_pool_id = aws_cognito_user_pool.pool.id
+    user_pool_id = aws_cognito_user_pool.this.id
 }
