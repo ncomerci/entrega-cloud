@@ -2,15 +2,6 @@
 # Amazon Cognito outputs
 # ---------------------------------------------------------------------------
 
-output "client_id" {
-  description = "Cognito client ID"
-  value = "${aws_cognito_user_pool_client.this.id}"
-}
-
-output "domain" {
-  value = "${aws_cognito_user_pool.this.domain}"
-}
-
-output "callback_url" {
-  value = one(aws_cognito_user_pool_client.this.callback_urls)
+output "endpoint" { 
+  value = "https://${aws_cognito_user_pool.this.domain}.auth.${var.aws_region_name}.amazoncognito.com/signup?response_type=code&client_id=${aws_cognito_user_pool_client.this.id}&redirect_uri=${one(aws_cognito_user_pool_client.this.callback_urls)}"
 }
