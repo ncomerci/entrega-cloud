@@ -1,10 +1,16 @@
 import boto3
 
-s3_client = boto3.client("s3")
-S3_BUCKET = 'BUCKET_NAME'
-
 def main(event, context):
-    object_key = "radiografia-mano.jpg"  # replace object key
-    file_content = s3_client.get_object(
-        Bucket=S3_BUCKET, Key=object_key)["Body"].read()
-    print(file_content)
+    s3 = boto3.resource('s3')
+
+    my_bucket = s3.Bucket('testeuge-mhs-medical-records-itba-cp-g1')
+
+    for my_bucket_object in my_bucket.objects.all():
+        print(my_bucket_object.key)
+
+    return {
+        'statusCode': 200,
+        'headers': { 
+            'Access-Control-Allow-Origin': "*", 
+        }
+    }

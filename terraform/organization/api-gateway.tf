@@ -37,6 +37,24 @@ module "apigw" {
           }
         }
       }
+      "/appointments" = {
+        get = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "POST"
+            payloadFormatVersion = "1.0"
+            type                 = "aws_proxy"
+            uri                  = module.lambda["list-medical-records"].invoke_arn
+          }
+        }
+        post = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "POST"
+            payloadFormatVersion = "1.0"
+            type                 = "aws_proxy"
+            uri                  = module.lambda["post-appointment"].invoke_arn
+          }
+        }
+      }
       
     }
   })

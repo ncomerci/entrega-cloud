@@ -1,5 +1,5 @@
 locals {
-  bucket_name = "montegrande-health-system.com"
+  bucket_name = "montegrande-health-system.bytedev.com.ar"
   path        = "../resources"
 
   s3 = {
@@ -45,6 +45,14 @@ locals {
       handler       = "lambda_new_medical_record.main"
       path          = "/medical-records"
       part_path     = "medical-records"
+    }
+    "post-appointment" = {
+      filename      = "${local.path}/lambda/lambda_post_appointment.zip"
+      function_name = "lambda-postAppointment"
+      method        = "POST"
+      handler       = "lambda_post_appointment.main"
+      path          = "/appointments"
+      part_path     = "appointments"
     }
   }
   

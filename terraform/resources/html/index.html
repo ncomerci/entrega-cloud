@@ -20,8 +20,32 @@
 					}
 				};
 
-			xhttp.open("GET", "${ENDPOINT}/medical-records", true);
+			xhttp.open("GET", "${ENDPOINT}" + "/medical-records", true);
 			xhttp.send();   
+			}
+
+			function postAppointment() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("replace_appointment").innerHTML = "Se cargaron los datos";
+					}
+				};
+
+			xhttp.open("POST", "${ENDPOINT}" + "/appointments", true);
+			xhttp.send();   
+			}
+
+			function goToCognito() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("replace_appointment").innerHTML = "Se cargaron los datos";
+					}
+				};
+
+			//xhttp.open("GET", "${ENDPOINT}/appointments", true);
+			//xhttp.send();   
 			}
 		</script>
 	</head>
@@ -50,11 +74,12 @@
 				<!-- Two -->
 					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
 						<div class="content">
-							<h2>Magna etiam feugiat</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
+							<h2>Post Appointment</h2>
+							<p>Hay una lambda que le pega a DynamoDB y guarda un dato mock en la tabla de turnos (appointments)</p>
 							<ul class="actions stacked">
-								<li><a href="#" class="button">Learn More</a></li>
+								<button class="button big wide smooth-scroll-middle" onclick="postAppointment()">Post Appointment</button>
 							</ul>
+							<h1><span id="replace-appointment"></span></h1>
 						</div>
 						<div class="image">
 							<img src="images/spotlight01.jpg" alt="" />
@@ -64,10 +89,10 @@
 				<!-- Three -->
 					<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
 						<div class="content">
-							<h2>Tempus adipiscing</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
+							<h2>Go To Cognito</h2>
+							<p>Configuramos Congito, si apretás acá te lleva al Sign Up, seguís los pasos Cognito de manda un mail para que lo verifiques y te redirige a nuestra web </p>
 							<ul class="actions stacked">
-								<li><a href="#" class="button">Learn More</a></li>
+								<button class="button big wide smooth-scroll-middle" onclick="goToCognito()">Sign Up</button>
 							</ul>
 						</div>
 						<div class="image">
