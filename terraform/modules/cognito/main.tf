@@ -52,6 +52,14 @@ resource "aws_cognito_user_pool" "this" {
 
     auto_verified_attributes             = ["email"]
 
+    tags = {
+      name       = "User Pool MHS"
+      author     = "MHS Grupo 1"
+      version    = 1
+      university = "ITBA"
+      subject    = "Cloud Computing" 
+    }
+
 }
 
 resource "aws_cognito_user_pool_client" "this" {
@@ -77,7 +85,14 @@ resource "aws_cognito_user_pool_client" "this" {
     }
 
     write_attributes = ["address", "birthdate", "email", "family_name", "gender", "given_name", "locale", "middle_name", "name", "nickname", "phone_number", "picture", "preferred_username", "profile", "updated_at", "website", "zoneinfo"]
-
+    
+    tags = {
+      name       = "User Pool Client MHS"
+      author     = "MHS Grupo 1"
+      version    = 1
+      university = "ITBA"
+      subject    = "Cloud Computing" 
+    }
 
 }   
 

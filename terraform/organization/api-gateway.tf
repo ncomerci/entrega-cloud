@@ -11,7 +11,7 @@ module "apigw" {
 
   aws_region_name = data.aws_region.current.name
   account_id = data.aws_caller_identity.current.account_id
-  # lambdas = {for lambda in keys(local.lambdas): lambda => module.lambda[lambda].invoke_arn}
+   
   template_file = jsonencode({
     openapi = "3.0.1"
     info = {
@@ -43,7 +43,7 @@ module "apigw" {
             httpMethod           = "POST"
             payloadFormatVersion = "1.0"
             type                 = "aws_proxy"
-            uri                  = module.lambda["list-medical-records"].invoke_arn
+            uri                  = module.lambda["get-appointment"].invoke_arn
           }
         }
         post = {

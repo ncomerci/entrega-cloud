@@ -17,8 +17,17 @@ resource "aws_cloudwatch_metric_alarm" "this" {
     threshold           = "10000.0"
     alarm_description   = "Monitoring API GW requests"
     alarm_actions       = [aws_sns_topic.this.arn]
+    
     dimensions = {
         ApiName = var.service_to_monitor
         Stage = "production"
+    }
+
+    tags = {
+      name       = "ClouWatch Alarm MHS"
+      author     = "MHS Grupo 1"
+      version    = 1
+      university = "ITBA"
+      subject    = "Cloud Computing" 
     }
 }

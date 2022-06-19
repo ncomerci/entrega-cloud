@@ -13,6 +13,14 @@ resource "aws_dynamodb_table" "users" {
   }
 
   hash_key = local.table.users.key
+
+  tags = {
+      name       = "Users Table MHS"
+      author     = "MHS Grupo 1"
+      version    = 1
+      university = "ITBA"
+      subject    = "Cloud Computing" 
+  }
 }
 
 resource "aws_dynamodb_table" "appointments" {
@@ -26,4 +34,12 @@ resource "aws_dynamodb_table" "appointments" {
   }
 
   hash_key = local.table.appointments.key
+
+  tags = {
+      name       = "Appointments Table MHS"
+      author     = "MHS Grupo 1"
+      version    = 1
+      university = "ITBA"
+      subject    = "Cloud Computing" 
+  }
 }

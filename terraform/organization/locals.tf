@@ -41,7 +41,7 @@ locals {
   lambdas = {
     "list-medical-records" = {
       filename      = "${local.path}/lambda/lambda_list_medical_records.zip"
-      function_name = "lambda-listMedicalRecords"
+      function_name = "getMedicalRecords"
       method        = "GET"
       handler       = "lambda_list_medical_records.main"
       path          = "/medical-records"
@@ -49,7 +49,7 @@ locals {
     }
     "new-medical-record" = {
       filename      = "${local.path}/lambda/lambda_new_medical_record.zip"
-      function_name = "lambda-newMedicalRecord"
+      function_name = "postMedicalRecord"
       method        = "POST"
       handler       = "lambda_new_medical_record.main"
       path          = "/medical-records"
@@ -57,9 +57,17 @@ locals {
     }
     "post-appointment" = {
       filename      = "${local.path}/lambda/lambda_post_appointment.zip"
-      function_name = "lambda-postAppointment"
+      function_name = "postAppointment"
       method        = "POST"
       handler       = "lambda_post_appointment.main"
+      path          = "/appointments"
+      part_path     = "appointments"
+    }
+    "get-appointment" = {
+      filename      = "${local.path}/lambda/lambda_post_appointment.zip"
+      function_name = "getAppointment"
+      method        = "GET"
+      handler       = "lambda_get_appointment.main"
       path          = "/appointments"
       part_path     = "appointments"
     }

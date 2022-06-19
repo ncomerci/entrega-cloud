@@ -6,6 +6,16 @@
 resource "aws_s3_bucket" "website" {
     bucket              = var.bucket_name
     object_lock_enabled = false
+
+    tags = {
+      name       = "S3 Bucket ${var.bucket_name}"
+      author     = "MHS Grupo 1"
+      version    = 1
+      university = "ITBA"
+      subject    = "Cloud Computing" 
+    }
+
+    
 }
 
 resource "aws_s3_bucket_website_configuration" "website" {
@@ -21,8 +31,7 @@ resource "aws_s3_bucket_website_configuration" "website" {
 }
 
 resource "aws_s3_bucket_policy" "website" {
-    # count = var.objects != {} ? 1 : 0
-
+   
     bucket = aws_s3_bucket.website.id
     policy = data.aws_iam_policy_document.website.json
 }
@@ -46,8 +55,7 @@ resource "aws_s3_bucket_website_configuration" "www" {
     }
 }
 resource "aws_s3_bucket_policy" "www" {
-    # count = var.objects != {} ? 1 : 0
-
+  
     bucket = aws_s3_bucket.www.id
     policy = data.aws_iam_policy_document.www.json
 }
@@ -56,17 +64,6 @@ resource "aws_s3_bucket_acl" "www" {
     bucket = aws_s3_bucket.www.id
     acl    = var.bucket_acl
 }
-
-# 5 - Upload objects TODO ABAJO SE CARGA TODA LA CARPETA
-#resource "aws_s3_object" "this" {
-#    for_each =  try(var.objects, {}) #{ for object, key in var.objects: object => key if try(var.objects, {}) != {} }
-#
-#    bucket        = aws_s3_bucket.this.id
-#    key           = try(each.value.rendered, replace(each.value.filename, "html/", "")) # remote path
-#    source        = try(each.value.rendered, format("../resources/%s", each.value.filename)) # where is the file located
-#    content_type  = each.value.content_type
-#    storage_class = try(each.value.tier, "STANDARD")
-#}
 
 # Upload frontend assets 
 resource "aws_s3_object" "this" {
@@ -84,7 +81,16 @@ resource "aws_s3_object" "this" {
 # Log bucket
 
 resource "aws_s3_bucket" "logs" {
-  bucket = "testeuge-mhs-logs-itba-cp-g1"
+  bucket = "mhs-logs-itba-cp-g1"
+
+  tags = {
+      name       = "S3 Bucket Logs"
+      author     = "MHS Grupo 1"
+      version    = 1
+      university = "ITBA"
+      subject    = "Cloud Computing" 
+    }
+
 }
 
 resource "aws_s3_bucket_acl" "logs" {
@@ -103,7 +109,16 @@ resource "aws_s3_bucket_logging" "this" {
 # Medical Records 
 
 resource "aws_s3_bucket" "medical_records" {
-  bucket = "testeuge-mhs-medical-records-itba-cp-g1"
+  bucket = "mhs-medical-records-itba-cp-g1"
+
+  tags = {
+      name       = "S3 Bucket Medical Records"
+      author     = "MHS Grupo 1"
+      version    = 1
+      university = "ITBA"
+      subject    = "Cloud Computing" 
+  }
+
 }
 
 # TODO foreach

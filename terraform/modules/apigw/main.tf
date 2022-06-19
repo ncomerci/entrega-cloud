@@ -8,6 +8,14 @@ resource "aws_api_gateway_rest_api" "this" {
   description = "MHS Api Gateway"
 
   body           = "${data.template_file.apigw-openapi.rendered}"
+
+  tags = {
+      name       = "Api Gateway MHS"
+      author     = "MHS Grupo 1"
+      version    = 1
+      university = "ITBA"
+      subject    = "Cloud Computing" 
+  } 
 }
 
 

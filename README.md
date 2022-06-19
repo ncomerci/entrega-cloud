@@ -4,6 +4,8 @@
 
 Serverless Terraform infrastructure for a HealthCare System.
 
+**URL: https://montegrande-health-system.bytedev.com.ar/**
+
 ### 0. Integrantes 
 
 - [Comerci, Nicolás](https://github.com/ncomerci)
@@ -12,9 +14,11 @@ Serverless Terraform infrastructure for a HealthCare System.
 - [Piñeiro, Eugenia Sol](https://github.com/eugepineiro)
 
 ### 1. Servicios implementados 
-- Amazon S3 buckets to store medical records
-- Cloudfront CDN 
-- Cognito for user authentication 
 - API Gateway 
-- AWS Lambda backend 
-- Aurora Serverless for user data 
+- Cloudfront 
+- CloudWatch
+- Cognito
+- DynamoDB
+- AWS Lambda 
+- S3 buckets
+- Web Application Firewall (WAF)

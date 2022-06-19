@@ -116,7 +116,12 @@ resource "aws_cloudfront_distribution" "s3" {
   }
 
   tags = {
-    Environment = "production"
+    environment = "production"
+    name        = "Cloudfront Distribution MHS"
+    author      = "MHS Grupo 1"
+    version     = 1
+    university  = "ITBA"
+    subject     = "Cloud Computing"  
   }
 
   viewer_certificate {

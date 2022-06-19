@@ -14,6 +14,14 @@ resource "aws_lambda_function" "this" {
     subnet_ids          = var.subnet_ids
     security_group_ids  = var.sg_ids
   }
+
+  tags = {
+      name       = "Lambda ${var.lambda_info.function_name}"
+      author     = "MHS Grupo 1"
+      version    = 1
+      university = "ITBA"
+      subject    = "Cloud Computing" 
+  }
 }
 
 resource "aws_lambda_permission" "this" {
