@@ -2,9 +2,9 @@ import boto3
 def main (event, context):
 	s3 = boto3.resource('s3')
 	 
-	txt_data = b'This is the content of the file uploaded from python boto3 asdfasdf'
+	txt_data = b'Este archivo lo subio una lambda al bucket loco! :D'
 
-	object = s3.Object('<bucket_name>', 'file_name.txt')
+	object = s3.Object('testeuge-mhs-medical-records-itba-cp-g1', 'file_name.txt') # TODO deshardcodear bucket name
 
 	result = object.put(Body=txt_data)
 	resp = {
