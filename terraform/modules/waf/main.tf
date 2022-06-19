@@ -47,10 +47,12 @@ resource "aws_wafv2_web_acl" "this" {
     }
   }
 
-  #TODO: tags
   tags = {
-    Tag1 = "Value1"
-    Tag2 = "Value2"
+    name       = "WAF MHS"
+    author     = "MHS Grupo 1"
+    version    = 1
+    university = "ITBA"
+    subject    = "Cloud Computing" 
   }
 
   visibility_config {

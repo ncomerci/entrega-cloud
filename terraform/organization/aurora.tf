@@ -1,4 +1,6 @@
+#########################################################################################################
 # Debido a las limitaciones de Academy no pudimos levantar Aurora Serverless, lo cambiamos por DynamoDB 
+#########################################################################################################
 
 #resource "aws_rds_cluster" "this" {
 #  cluster_identifier = "mhs-cp-g1"

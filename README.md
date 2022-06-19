@@ -5,6 +5,7 @@
 Serverless Terraform infrastructure for a HealthCare System.
 
 **URL: https://montegrande-health-system.bytedev.com.ar/**
+(importante: no cambiar el nombre del bucket del front)
 
 ### 0. Integrantes 
 

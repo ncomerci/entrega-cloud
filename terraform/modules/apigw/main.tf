@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------
 
 resource "aws_api_gateway_rest_api" "this" {
-  # provider = aws.aws
+ 
   name        = "AWSAPIGateway-MHS"
   description = "MHS Api Gateway"
 
@@ -20,7 +20,6 @@ resource "aws_api_gateway_rest_api" "this" {
 
 
 resource "aws_api_gateway_deployment" "this" {
-  # provider = aws.aws
 
   rest_api_id = aws_api_gateway_rest_api.this.id
 
@@ -34,8 +33,7 @@ resource "aws_api_gateway_deployment" "this" {
 }
 
 resource "aws_api_gateway_stage" "this" {
-  # provider = aws.aws
-
+ 
   deployment_id = aws_api_gateway_deployment.this.id
   rest_api_id   = aws_api_gateway_rest_api.this.id
   stage_name    = "production"

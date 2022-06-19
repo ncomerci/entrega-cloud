@@ -2,8 +2,7 @@
 # AWS Lambda resources
 # ---------------------------------------------------------------------------
 
-# Lambda
-
+# We need to create it just one time, not inside foreach 
 resource "aws_security_group" "this" {
   name = "lambda-sg"
   description = "Generic Lambda Security Group"
@@ -39,4 +38,9 @@ module "lambda" {
   apigw_execution_arn = module.apigw.execution_arn
   subnet_ids          = module.vpc.subnet_ids
   sg_ids              = [aws_security_group.this.id]
+
+  depends_on = [
+    module.apigw,
+    module.vpc
+  ]
 }

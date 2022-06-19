@@ -121,14 +121,14 @@ resource "aws_s3_bucket" "medical_records" {
 
 }
 
-# TODO foreach
-resource "aws_s3_bucket_object" "medical_record_radiografia" {
+# Mock data
+resource "aws_s3_object" "medical_record_radiografia" {
     key    = "user1/radiografia-mano.jpg"
     bucket = aws_s3_bucket.medical_records.id
     source = "../resources/images/radiografia-mano.jpg"
 }
 
-resource "aws_s3_bucket_object" "medical_record_pdf" {
+resource "aws_s3_object" "medical_record_pdf" {
     key    = "user1/medical-record.pdf"
     bucket = aws_s3_bucket.medical_records.id
     source = "../resources/docs/medical_record.pdf"

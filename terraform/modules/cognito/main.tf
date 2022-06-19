@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------
 
 resource "aws_cognito_user_pool" "this" {
-    name    = var.pool_name
+    name    = local.pool_name
  
     alias_attributes = [ 
         "email",
@@ -52,18 +52,10 @@ resource "aws_cognito_user_pool" "this" {
 
     auto_verified_attributes             = ["email"]
 
-    tags = {
-      name       = "User Pool MHS"
-      author     = "MHS Grupo 1"
-      version    = 1
-      university = "ITBA"
-      subject    = "Cloud Computing" 
-    }
-
 }
 
 resource "aws_cognito_user_pool_client" "this" {
-    name = var.client_name
+    name = local.client_name
     user_pool_id                         = aws_cognito_user_pool.this.id
 
     callback_urls                        = ["https://${var.redirect_uri}/"]
@@ -86,17 +78,10 @@ resource "aws_cognito_user_pool_client" "this" {
 
     write_attributes = ["address", "birthdate", "email", "family_name", "gender", "given_name", "locale", "middle_name", "name", "nickname", "phone_number", "picture", "preferred_username", "profile", "updated_at", "website", "zoneinfo"]
     
-    tags = {
-      name       = "User Pool Client MHS"
-      author     = "MHS Grupo 1"
-      version    = 1
-      university = "ITBA"
-      subject    = "Cloud Computing" 
-    }
 
 }   
 
 resource "aws_cognito_user_pool_domain" "this" {
-    domain       = var.domain_name
+    domain       = local.domain_name
     user_pool_id = aws_cognito_user_pool.this.id
 }
