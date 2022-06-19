@@ -1,4 +1,11 @@
 locals {
+  ################################################
+  ## VPC
+  vpc_cidr = "10.0.0.0/16"
+  az_total = 2
+  
+  ################################################
+  ## S3
   bucket_name = "montegrande-health-system.bytedev.com.ar"
   path        = "../resources"
 
@@ -29,6 +36,8 @@ locals {
 
   mime_types = jsondecode(file("${local.path}/mime.json"))
 
+  ################################################
+  ## Lambdas
   lambdas = {
     "list-medical-records" = {
       filename      = "${local.path}/lambda/lambda_list_medical_records.zip"

@@ -21,3 +21,13 @@ variable "apigw_execution_arn" {
     type = string
     description = "API GW execution ARN"
 }
+
+variable "subnet_ids" {
+    type = list
+    description = "The list of subnets created"
+}
+
+variable "sg_ids" {
+    type = list
+    description = "The list of subnets created"
+}
