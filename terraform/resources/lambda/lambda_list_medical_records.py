@@ -4,7 +4,7 @@ def main (event, context):
  
 	s3 = boto3.resource('s3')
 
-	bucket = s3.Bucket('testeuge-mhs-medical-records-itba-cp-g1')
+	bucket = s3.Bucket('testeuge-mhs-medical-records-itba-cp-g1') #TODO deshardcodear bucket name
 	objects = []
 	for object in bucket.objects.all():
 		objects.append(object.key)
@@ -14,7 +14,7 @@ def main (event, context):
 		"headers": {
 			"Access-Control-Allow-Origin": "*",
 		},
-		"body": "Esto deberia pegarle a S3 y agarrar todos los medical records"
+		"body": f"Medical records: {objects}"
 	}
 
 	return resp

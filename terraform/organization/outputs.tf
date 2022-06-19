@@ -3,5 +3,9 @@ output "api_endpoint" {
 }
 
 output "cognito_endpoint" {
-  value = module.cognito.cognito_client_id
+  value = module.cognito.client_id
+}
+
+output "cognito_endpoint2" {
+  value = module.cognito.url
 }
