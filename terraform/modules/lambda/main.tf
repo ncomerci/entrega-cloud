@@ -4,10 +4,10 @@
 
 resource "aws_lambda_function" "this" {
   # provider = aws.aws
-  filename      = "${var.local_path}/lambda/lambda_list_medical_records.zip"
-  function_name = "AWSLambdaHandler-listMedicalRecords"
+  filename      = var.lambda_info.filename
+  function_name = var.lambda_info.function_name
   role          = "arn:aws:iam::${var.account_id}:role/LabRole"
-  handler       = "lambda_list_medical_records.main"
+  handler       = var.lambda_info.handler
   runtime       = "python3.9"
 }
 
@@ -19,5 +19,5 @@ resource "aws_lambda_permission" "this" {
   function_name = aws_lambda_function.this.function_name
   principal     = "apigateway.amazonaws.com"
 
-  source_arn    = var.api_gw_source_arn
+  source_arn    = "${var.apigw_execution_arn}/*/${var.lambda_info.method}${var.lambda_info.path}"
 }

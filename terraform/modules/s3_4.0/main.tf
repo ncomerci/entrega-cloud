@@ -84,7 +84,7 @@ resource "aws_s3_object" "this" {
 # Log bucket
 
 resource "aws_s3_bucket" "logs" {
-  bucket = "testeuge-mhs-logs-itba-cp-g1"
+  bucket = "mhs-logs-itba-cp-g1"
 }
 
 resource "aws_s3_bucket_acl" "logs" {
@@ -103,7 +103,7 @@ resource "aws_s3_bucket_logging" "this" {
 # Medical Records 
 
 resource "aws_s3_bucket" "medical_records" {
-  bucket = "testeuge-mhs-medical-records-itba-cp-g1"
+  bucket = "mhs-medical-records-itba-cp-g1"
 }
 
 # TODO foreach

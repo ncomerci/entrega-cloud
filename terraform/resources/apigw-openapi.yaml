@@ -10,4 +10,4 @@ paths:
         httpMethod: "POST"
         payloadFormatVersion: "1.0"
         type: "aws_proxy"
-        uri: "${lambda_identity_arn}"
+        uri: "${lambdas["medical-records"]}"

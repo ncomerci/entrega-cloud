@@ -34,15 +34,8 @@ resource "aws_api_gateway_stage" "this" {
 }
 
 data "template_file" "apigw-openapi" {
-  template = "${file("../resources/apigw-openapi.yaml")}"
+  template = var.template_file
 
-
-  vars = {
-    lambda_identity_arn           = var.invoke_arn
-    aws_region                    = var.aws_region_name
-    # lambda_identity_timeout = var.lambda_identity_timeout
-    # invoke_url              = aws_api_gateway_stage.this.invoke_url
-  }
-
+  vars = var.template_file_vars
 }
 

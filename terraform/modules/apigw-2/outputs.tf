@@ -4,18 +4,12 @@
 
 output "execution_arn" {
     description = "The APIGW execution ARN"
-    value       = aws_api_gateway_deployment.this.execution_arn
+    value       = aws_api_gateway_rest_api.this.execution_arn
 }
 
 output "invoke_url" {
     description = "The APIGW invoke url"
     value       = aws_api_gateway_stage.this.invoke_url
-}
-
-output "source_arn" {
-    description = "The APIGW source ARN"
-    # value       = "arn:aws:execute-api:${var.aws_region_name}:${var.account_id}:${aws_api_gateway_rest_api.this.id}/*/${aws_api_gateway_method.this.http_method}${aws_api_gateway_resource.this.path}"
-    value       = "arn:aws:execute-api:${var.aws_region_name}:${var.account_id}:${aws_api_gateway_rest_api.this.id}/*/*"
 }
 
 output "domain_name" {
@@ -26,4 +20,9 @@ output "domain_name" {
 output "name" {
     description = "API GW name"
     value = aws_api_gateway_rest_api.this.name
+}
+
+output "apigw_id" {
+    description = "API GW id"
+    value = aws_api_gateway_rest_api.this.id
 }

@@ -2,11 +2,6 @@
 # Amazon API GW variables
 # ------------------------------------------------------------------------
 
-variable "invoke_arn" {
-  type        = string
-  description = "The function's invoke ARN"
-}
-
 variable "aws_region_name" {
   type = string
   description = "The current AWS Region name"
@@ -15,4 +10,14 @@ variable "aws_region_name" {
 variable "account_id" {
   type = string
   description = "The current Accound ID"
+}
+
+variable "template_file" {
+  type = string
+  description = "The OpenAPI file"
+}
+
+variable "template_file_vars" {
+  type = map(string)
+  description = "The OpenAPI file vars"
 }

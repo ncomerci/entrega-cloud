@@ -1,5 +1,5 @@
 locals {
-  bucket_name = "montegrande-health-system.bytedev.com.ar"
+  bucket_name = "montegrande-health-system.com"
   path        = "../resources"
 
   s3 = {
@@ -28,4 +28,24 @@ locals {
   }
 
   mime_types = jsondecode(file("${local.path}/mime.json"))
+
+  lambdas = {
+    "list-medical-records" = {
+      filename      = "${local.path}/lambda/lambda_list_medical_records.zip"
+      function_name = "lambda-listMedicalRecords"
+      method        = "GET"
+      handler       = "lambda_list_medical_records.main"
+      path          = "/medical-records"
+      part_path     = "medical-records"
+    }
+    "new-medical-record" = {
+      filename      = "${local.path}/lambda/lambda_new_medical_record.zip"
+      function_name = "lambda-newMedicalRecord"
+      method        = "POST"
+      handler       = "lambda_new_medical_record.main"
+      path          = "/medical-records"
+      part_path     = "medical-records"
+    }
+  }
+  
 }
