@@ -4,7 +4,7 @@
 
 resource "aws_cloudfront_distribution" "s3" {
   origin {
-    
+
     domain_name = var.domain_name
     origin_id   = local.s3_origin_id
 
@@ -17,7 +17,7 @@ resource "aws_cloudfront_distribution" "s3" {
   }
 
   origin {
-    
+
     domain_name = var.api_domain_name
     origin_id   = local.api_origin_id
     origin_path = "/production"
@@ -29,11 +29,11 @@ resource "aws_cloudfront_distribution" "s3" {
       origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
- 
+
   web_acl_id = var.web_acl_arn
 
   enabled = true
- 
+
   default_root_object = "index.html"
 
   default_cache_behavior {
@@ -68,7 +68,7 @@ resource "aws_cloudfront_distribution" "s3" {
     author      = "MHS Grupo 1"
     version     = 1
     university  = "ITBA"
-    subject     = "Cloud Computing"  
+    subject     = "Cloud Computing"
   }
 
   viewer_certificate {

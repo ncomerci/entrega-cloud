@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_lambda_function" "this" {
-  
+
   filename      = var.lambda_info.filename
   function_name = var.lambda_info.function_name
   role          = "arn:aws:iam::${var.account_id}:role/LabRole"
@@ -17,11 +17,11 @@ resource "aws_lambda_function" "this" {
   #}
 
   tags = {
-      name       = "Lambda ${var.lambda_info.function_name}"
-      author     = "MHS Grupo 1"
-      version    = 1
-      university = "ITBA"
-      subject    = "Cloud Computing" 
+    name       = "Lambda ${var.lambda_info.function_name}"
+    author     = "MHS Grupo 1"
+    version    = 1
+    university = "ITBA"
+    subject    = "Cloud Computing"
   }
 }
 
@@ -33,5 +33,5 @@ resource "aws_lambda_permission" "this" {
   function_name = aws_lambda_function.this.function_name
   principal     = "apigateway.amazonaws.com"
 
-  source_arn    = "${var.apigw_execution_arn}/*/${var.lambda_info.method}${var.lambda_info.path}"
+  source_arn = "${var.apigw_execution_arn}/*/${var.lambda_info.method}${var.lambda_info.path}"
 }

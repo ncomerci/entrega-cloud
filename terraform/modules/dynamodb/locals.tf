@@ -3,14 +3,14 @@
 # ---------------------------------------------------------------------------
 
 locals {
-  
-  table = { 
+
+  table = {
     users = {
-      key = "user-id"
+      key  = "user-id"
       name = "users-table"
     }
     appointments = {
-      key = "appointment-id"
+      key  = "appointment-id"
       name = "appointments-table"
     }
 

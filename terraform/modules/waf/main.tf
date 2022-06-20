@@ -52,7 +52,7 @@ resource "aws_wafv2_web_acl" "this" {
     author     = "MHS Grupo 1"
     version    = 1
     university = "ITBA"
-    subject    = "Cloud Computing" 
+    subject    = "Cloud Computing"
   }
 
   visibility_config {

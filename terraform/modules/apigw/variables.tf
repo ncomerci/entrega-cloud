@@ -3,21 +3,21 @@
 # ------------------------------------------------------------------------
 
 variable "aws_region_name" {
-  type = string
+  type        = string
   description = "The current AWS Region name"
 }
 
 variable "account_id" {
-  type = string
+  type        = string
   description = "The current Accound ID"
 }
 
 variable "template_file" {
-  type = string
+  type        = string
   description = "The OpenAPI file"
 }
 
 variable "template_file_vars" {
-  type = map(string)
+  type        = map(string)
   description = "The OpenAPI file vars"
 }

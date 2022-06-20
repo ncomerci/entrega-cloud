@@ -2,7 +2,7 @@
 # Amazon API Gateway
 # ---------------------------------------------------------------------------
 
-module "apigw" { 
+module "apigw" {
   source = "../modules/apigw"
 
   providers = {
@@ -10,8 +10,8 @@ module "apigw" {
   }
 
   aws_region_name = data.aws_region.current.name
-  account_id = data.aws_caller_identity.current.account_id
-   
+  account_id      = data.aws_caller_identity.current.account_id
+
   template_file = jsonencode({
     openapi = "3.0.1"
     info = {
@@ -55,7 +55,7 @@ module "apigw" {
           }
         }
       }
-      
+
     }
   })
   template_file_vars = {

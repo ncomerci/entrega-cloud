@@ -4,10 +4,10 @@
 
 # We need to create it just one time, not inside foreach 
 resource "aws_security_group" "this" {
-  name = "lambda-sg"
+  name        = "lambda-sg"
   description = "Generic Lambda Security Group"
-  vpc_id = module.vpc.vpc_id
-  
+  vpc_id      = module.vpc.vpc_id
+
   ingress {
     from_port        = 0
     to_port          = 0

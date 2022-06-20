@@ -11,6 +11,6 @@ variable "api_domain_name" {
 }
 
 variable "web_acl_arn" {
-  type = string
+  type        = string
   description = "WAF Web ACL ARN"
 }

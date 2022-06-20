@@ -7,7 +7,7 @@ locals {
   ## VPC
   vpc_cidr = "10.0.0.0/16"
   az_total = 2
-  
+
   ################################################
   ## S3
   bucket_name = "montegrande-health-system.bytedev.com.ar"
@@ -76,5 +76,5 @@ locals {
       part_path     = "appointments"
     }
   }
-  
+
 }

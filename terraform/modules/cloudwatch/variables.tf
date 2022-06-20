@@ -3,6 +3,6 @@
 # ---------------------------------------------------------------------------
 
 variable "service_to_monitor" {
-  type = string
+  type        = string
   description = "service to monitor"
 }

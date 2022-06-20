@@ -3,31 +3,31 @@
 # ------------------------------------------------------------------------
 
 variable "account_id" {
-  type = string
+  type        = string
   description = "The current Accound ID"
 }
 
-variable "local_path" { 
-   type = string
+variable "local_path" {
+  type        = string
   description = "Local path"
-} 
+}
 
 variable "lambda_info" {
-  type = map(string)
+  type        = map(string)
   description = "Contains all necesary lambda info"
 }
 
 variable "apigw_execution_arn" {
-    type = string
-    description = "API GW execution ARN"
+  type        = string
+  description = "API GW execution ARN"
 }
 
 variable "subnet_ids" {
-    type = list
-    description = "The list of subnets created"
+  type        = list(any)
+  description = "The list of subnets created"
 }
 
 variable "sg_ids" {
-    type = list
-    description = "The list of subnets created"
+  type        = list(any)
+  description = "The list of subnets created"
 }

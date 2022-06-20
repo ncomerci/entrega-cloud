@@ -3,6 +3,6 @@
 # ------------------------------------------------------------------------
 
 variable "vpc_cidr" {
-  type = string
+  type        = string
   description = "VPC CIDR"
 }
