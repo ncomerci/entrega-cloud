@@ -38,3 +38,14 @@ resource "aws_subnet" "this" {
       subject    = "Cloud Computing" 
   }
 }
+
+resource "aws_internet_gateway" "this" {
+  vpc_id = aws_vpc.this.id
+
+   
+}
+
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id       = aws_vpc.this.id
+  service_name = "com.amazonaws.us-east-1.s3"
+}

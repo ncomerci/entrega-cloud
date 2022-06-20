@@ -1,3 +1,7 @@
+# ---------------------------------------------------------------------------
+# Root Locals
+# ---------------------------------------------------------------------------
+
 locals {
   ################################################
   ## VPC
@@ -64,7 +68,7 @@ locals {
       part_path     = "appointments"
     }
     "get-appointment" = {
-      filename      = "${local.path}/lambda/lambda_post_appointment.zip"
+      filename      = "${local.path}/lambda/lambda_get_appointment.zip"
       function_name = "getAppointment"
       method        = "GET"
       handler       = "lambda_get_appointment.main"

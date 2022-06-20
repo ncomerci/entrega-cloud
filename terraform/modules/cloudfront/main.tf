@@ -19,7 +19,7 @@ resource "aws_cloudfront_distribution" "s3" {
   origin {
     
     domain_name = var.api_domain_name
-    origin_id   = "apigw"
+    origin_id   = local.api_origin_id
     origin_path = "/production"
 
     custom_origin_config {

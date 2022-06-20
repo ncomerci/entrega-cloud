@@ -3,17 +3,17 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_lambda_function" "this" {
-  # provider = aws.aws
+  
   filename      = var.lambda_info.filename
   function_name = var.lambda_info.function_name
   role          = "arn:aws:iam::${var.account_id}:role/LabRole"
   handler       = var.lambda_info.handler
   runtime       = "python3.9"
 
-  vpc_config {
-    subnet_ids          = var.subnet_ids
-    security_group_ids  = var.sg_ids
-  }
+  #vpc_config {
+  #  subnet_ids          = var.subnet_ids
+  #  security_group_ids  = var.sg_ids
+  #}
 
   tags = {
       name       = "Lambda ${var.lambda_info.function_name}"

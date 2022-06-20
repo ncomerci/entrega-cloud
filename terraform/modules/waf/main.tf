@@ -3,7 +3,7 @@
 # --------------------------------------------------------------------
 
 resource "aws_wafv2_web_acl" "this" {
-  name        = "wacl-cloudfront"
+  name        = "mhs-wacl-cloudfront"
   description = "Contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including those described in OWASP publications."
   scope       = "CLOUDFRONT"
 
@@ -12,7 +12,7 @@ resource "aws_wafv2_web_acl" "this" {
   }
 
   rule {
-    name     = "rule-1"
+    name     = "AWSManagedRulesCommonRuleSet"
     priority = 1
 
     override_action {

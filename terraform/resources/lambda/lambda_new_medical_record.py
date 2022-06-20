@@ -4,7 +4,7 @@ def main (event, context):
 	 
 	txt_data = b'Este archivo lo subio una lambda al bucket loco! :D'
 
-	object = s3.Object('testeuge-mhs-medical-records-itba-cp-g1', 'file_name.txt') # TODO deshardcodear bucket name
+	object = s3.Object('testeuge2-mhs-medical-records-itba-cp-g1', 'file_name.txt') # TODO deshardcodear bucket name
 
 	result = object.put(Body=txt_data)
 	resp = {

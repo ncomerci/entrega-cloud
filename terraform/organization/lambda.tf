@@ -39,8 +39,4 @@ module "lambda" {
   subnet_ids          = module.vpc.subnet_ids
   sg_ids              = [aws_security_group.this.id]
 
-  depends_on = [
-    module.apigw,
-    module.vpc
-  ]
 }

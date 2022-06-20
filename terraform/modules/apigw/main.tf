@@ -4,8 +4,8 @@
 
 resource "aws_api_gateway_rest_api" "this" {
  
-  name        = "AWSAPIGateway-MHS"
-  description = "MHS Api Gateway"
+  name           = "AWSAPIGateway-MHS"
+  description    = "MHS Api Gateway"
 
   body           = "${data.template_file.apigw-openapi.rendered}"
 

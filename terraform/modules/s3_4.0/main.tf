@@ -81,7 +81,7 @@ resource "aws_s3_object" "this" {
 # Log bucket
 
 resource "aws_s3_bucket" "logs" {
-  bucket = "mhs-logs-itba-cp-g1"
+  bucket = "testeuge2-mhs-logs-itba-cp-g1"
 
   tags = {
       name       = "S3 Bucket Logs"
@@ -109,7 +109,7 @@ resource "aws_s3_bucket_logging" "this" {
 # Medical Records 
 
 resource "aws_s3_bucket" "medical_records" {
-  bucket = "mhs-medical-records-itba-cp-g1"
+  bucket = "testeuge2-mhs-medical-records-itba-cp-g1"
 
   tags = {
       name       = "S3 Bucket Medical Records"
