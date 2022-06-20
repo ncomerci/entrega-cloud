@@ -39,10 +39,11 @@ resource "aws_subnet" "this" {
   }
 }
 
+
+# TODO(para el final): Lambdas en VPC, accederian a S3 y DynamoDB por VPC endpoint 
 resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
 
-   
 }
 
 resource "aws_vpc_endpoint" "s3" {

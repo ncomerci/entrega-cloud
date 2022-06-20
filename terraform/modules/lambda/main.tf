@@ -10,6 +10,7 @@ resource "aws_lambda_function" "this" {
   handler       = var.lambda_info.handler
   runtime       = "python3.9"
 
+  # TODO(para el final): Lambdas en VPC, accederian a S3 y DynamoDB por VPC endpoint 
   #vpc_config {
   #  subnet_ids          = var.subnet_ids
   #  security_group_ids  = var.sg_ids
