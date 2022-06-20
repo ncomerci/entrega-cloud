@@ -5,7 +5,7 @@
 Serverless Terraform infrastructure for a HealthCare System.
 
 **URL: https://montegrande-health-system.bytedev.com.ar/**
-(importante: no cambiar el nombre del bucket del front)
+(importante: no cambiar el nombre del bucket del front porque se usa un dominio propio)
 
 ### 0. Integrantes 
 
@@ -23,3 +23,12 @@ Serverless Terraform infrastructure for a HealthCare System.
 - AWS Lambda 
 - S3 buckets
 - Web Application Firewall (WAF)
+
+### 2. Instalación 
+
+```bash 
+terraform init 
+terraform validate
+terraform plan 
+terraforom apply 
+```
