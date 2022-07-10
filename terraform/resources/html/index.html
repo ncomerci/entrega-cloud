@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>MHS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script>
+			function getMedicalRecords() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("replace").innerHTML = this.responseText;
+					}
+				};
+
+			xhttp.open("GET", "${ENDPOINT}/medical-records", true);
+			xhttp.send();   
+			}
+
+			function postMedicalRecord() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("replacemedical").innerHTML = "Anda al bucket de medical-record y fijate que hay un file-name.txt";
+					}
+				};
+
+			xhttp.open("POST", "${ENDPOINT}/medical-records", true);
+			xhttp.send();   
+			}
+
+			function postAppointment() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("replaceappointment").innerHTML = "Anda a DynamoDB y fijate que hay appointments en appointments-table";
+					}
+				};
+
+			xhttp.open("POST", "${ENDPOINT}/appointments", true);
+			xhttp.send();   
+			}
+
+		</script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+
+				<!-- One -->
+					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+						<div class="content">
+							<h1>Montegrande Health Care System</h1>
+							<p class="major">
+								The saying “laughter is the best medicine” is believed to have originated. But it's more than a proverb. The power of laughter has long been recognized by both medical and spiritual experts</p>
+							<ul class="actions stacked">
+								<a class="button big wide smooth-scroll-middle" href="${COGNITO_ENDPOINT}">Sign Up</a>
+							</ul>            
+						</div>
+						<div class="image">
+							<img src="images/banner.jpg" alt="" />
+						</div>
+					</section>
+
+				<!-- Two -->
+					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
+						<div class="content">
+							<h2>Post Appointment</h2>
+							<p>Hay una lambda que le pega a DynamoDB y guarda un dato mock en la tabla de turnos (appointments)</p>
+							<ul class="actions stacked">
+								<button class="button big wide smooth-scroll-middle" onclick="postAppointment()">Post Appointment</button>
+							</ul>
+							<h2><span id="replaceappointment"></span></h2>
+						</div>
+						<div class="image">
+							<img src="images/spotlight01.jpg" alt="" />
+						</div>
+					</section>
+
+				<!-- Three -->
+					<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+						<div class="content">
+							<h2>Get Medical Records</h2>
+							<p>Hicimos una lambda que le pega a S3 y lista los nombres de los recursos de un bucket</p>
+							<ul class="actions stacked">
+								<button class="button big wide smooth-scroll-middle" onclick="getMedicalRecords()">Get Medical Records</button>
+							</ul>
+							<h2><span id="replace"></span></h2>
+						</div>
+						<div class="image">
+							<img src="images/spotlight02.jpg" alt="" />
+						</div>
+					</section>
+
+				<!-- Four -->
+					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+						<div class="content">
+							<h2>Post Medical Record</h2>
+							<p>Hicimos una lambda que le pega a S3 y guarda un .txt en el bucket de medical records</p>
+							<ul class="actions stacked">
+								<button class="button big wide smooth-scroll-middle" onclick="postMedicalRecord()">Post Medical Record</button>
+							</ul>
+							<h2><span id="replacemedical"></span></h2>
+						</div>
+						<div class="image">
+							<img src="images/spotlight03.jpg" alt="" />
+						</div>
+					</section>
+
+				<!-- Five -->
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<h2>MHS - Grupo 1</h2>
+							<p>El objetivo es automatizar el Sistema de consultas y registro de pacientes con una solución Cloud a través del uso de una página web dinámica junto con un chatbot. La solución permitirá escalar on-demand, distribuir la carga de pacientes, tener una comunicación entre los distintos consultorios de forma sencilla, tener mayor velocidad y agilidad, y evitar el registro de consultas de forma manual.</p>
+						</div>
+
+						<!-- Gallery -->
+							<div class="gallery style2 medium lightbox onscroll-fade-in">
+								<article>
+									<a href="images/gallery/fulls/01.jpg" class="image">
+										<img src="images/gallery/thumbs/01.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/02.jpg" class="image">
+										<img src="images/gallery/thumbs/02.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/03.jpg" class="image">
+										<img src="images/gallery/thumbs/03.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/04.jpg" class="image">
+										<img src="images/gallery/thumbs/04.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/05.jpg" class="image">
+										<img src="images/gallery/thumbs/05.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/06.jpg" class="image">
+										<img src="images/gallery/thumbs/06.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/07.jpg" class="image">
+										<img src="images/gallery/thumbs/07.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/08.jpg" class="image">
+										<img src="images/gallery/thumbs/08.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/09.jpg" class="image">
+										<img src="images/gallery/thumbs/09.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/10.jpg" class="image">
+										<img src="images/gallery/thumbs/10.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/11.jpg" class="image">
+										<img src="images/gallery/thumbs/11.jpg" alt="" />
+									</a>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/12.jpg" class="image">
+										<img src="images/gallery/thumbs/12.jpg" alt="" />
+									</a>
+								</article>
+							</div>
+
+					</section>
+
+				<!-- Six -->
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<h2>Servicios Implementados</h2>
+							<p>Se implementaron distintos servicios de AWS que estaban definidos en nuestra arquitectura serverless, siguiendo las buenas prácticas de Terraform y teniendo en cuenta las restricciones del Lab de Academy</p>
+							<div class="items style1 medium onscroll-fade-in">
+								<section>
+									<span class="icon solid style2 major fa-magic"></span>
+									<h3>Lambda</h3>
+									<p>Se hicieron algunas lambdas con data mockeada: getMedicalRecords(), postMedicalRecord(), postAppointment()</p>
+								</section>
+								<section>
+									<span class="icon solid style2 major fa fa-share-alt-square"></span>
+									<h3>Api Gateway</h3>
+									<p>Se tiene un API Gateway para hacer los requests llamando a las lambdas</p>
+								</section>
+								<section>
+									<span class="icon solid style2 major fa-bolt"></span>
+									<h3>CloudFront</h3>
+									<p>Levantamos cloudfront como CDN para distribuir el contenido</p>
+								</section>
+								<section>
+									<span class="icon solid style2 major fa-database"></span>
+									<h3>DynamoDB</h3>
+									<p>Originamente teníamos Aurora Serverless pero debido a las restricciones de Academy no logramos levantar esa base, nos faltaban permisos. Entonces decimos levantar dos tablas de DynamoDB (appointments-table y users-table)</p>
+								</section>
+								<section>
+									<span class="icon solid style2 major fa-file"></span>
+									<h3>S3</h3>
+									<p>Esta página está hosteada en un bucket de S3. El www hace un redirect y tenemos un dominio pago para tener HTTPS. (Academy no nos deja levantar Route53 ni ACM)</p>
+								</section>
+								<section>
+									<span class="icon style2 major fa-address-card"></span>
+									<h3>Cognito</h3>
+									<p>El boton de SignUp hace un redirect a Cognito, te lleva a su página y te deja inscribirte con username, mail y password. Te manda un mail para que verifiques tu user y después te trae a la página de nuevo (para esto era necesario tenes HTTPS)</p>
+								</section>
+								<section>
+									<span class="icon solid style2 major fa-fire"></span>
+									<h3>WAF</h3>
+									<p>Definimos un Web-ACL con una rule de OWASP para vulnerabilidades y levantamos WAF como firewall</p>
+								</section>
+								<section>
+									<span class="icon solid style2 major fa-chart-bar"></span>
+									<h3>CloudWatch</h3>
+									<p>Levantamos una alarma para monitorear el API-GW y un topic de SNS default como ejemplo para probar este servicio</p>
+								</section>
+							</div>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer class="wrapper style1 align-center">
+						Esperamos que haya gustado! Para el final vamos a incorporar más cosas para no tener toda la data mockeada
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
