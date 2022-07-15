@@ -18,24 +18,17 @@ locals {
     # 1 - Website
     website = {
       bucket_name = local.bucket_name
-      path        = "../resources"
-
-      objects = {
-        error = {
-          filename     = "html/error.html"
-          content_type = "text/html"
-        }
-        css = {
-          filename     = "html/main.css"
-          content_type = "text/html"
-        }
-      }
     }
 
     # 2 - WWW Website
     www-website = {
       bucket_name = "www.${local.bucket_name}"
     }
+
+    # 3 - Logs
+    logs = { 
+      bucket_name = "mhs-logs-itba-cp-g1"
+    } 
   }
 
   mime_types = jsondecode(file("${local.path}/mime.json"))
@@ -74,6 +67,21 @@ locals {
       handler       = "lambda_get_appointment.main"
       path          = "/appointments"
       part_path     = "appointments"
+    }
+  }
+
+  ################################################
+  ## DynamoDB 
+
+  dynamodb = { 
+    users = { 
+      name           = "users-table" 
+      hash_key       = "user-id"
+    }
+
+    appointments = { 
+      name           = "appointments-table"
+      hash_key       = "appointment-id"
     }
   }
 
