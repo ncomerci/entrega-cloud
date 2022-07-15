@@ -3,12 +3,12 @@
 # ---------------------------------------------------------------------------
 
 variable "domain_name" {
-  type = string
+  type        = string
   description = "Domain name"
 }
 
 variable "api_domain_name" {
-  type = string
+  type        = string
   description = "API domain name"
 }
 

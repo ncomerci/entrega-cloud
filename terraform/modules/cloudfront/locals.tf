@@ -9,6 +9,6 @@ locals {
   api_origin_id = "apigw"
 
   tags = {
-    name        = "Cloudfront Distribution MHS"
+    name = "Cloudfront Distribution MHS"
   }
 }

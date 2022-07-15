@@ -3,6 +3,6 @@ locals {
   description = "MHS Api Gateway"
 
   tags = {
-    name      = "Api Gateway MHS"
+    name = "Api Gateway MHS"
   }
 }

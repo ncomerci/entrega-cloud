@@ -15,5 +15,5 @@ resource "aws_dynamodb_table" "this" {
   hash_key = var.table_hash_key
 
   # TODO a chequear tema tags
- 
+
 }

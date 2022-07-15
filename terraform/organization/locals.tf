@@ -18,41 +18,41 @@ locals {
     # 1 - Website
     website = {
       bucket_name = local.bucket_name
-      is_website = true
+      is_website  = true
     }
 
     # 2 - WWW Website
     www-website = {
-      bucket_name = "www.${local.bucket_name}"
+      bucket_name     = "www.${local.bucket_name}"
       count_condition = "web"
-      is_website = true
+      is_website      = true
     }
 
     # 3 - Logs
-    logs = { 
+    logs = {
       bucket_name = "mhs-logs-itba-cp-g1"
-      bucket_acl  = "log-delivery-write" 
-      is_log = true
-      logs_from = local.bucket_name
-    } 
+      bucket_acl  = "log-delivery-write"
+      is_log      = true
+      logs_from   = local.bucket_name
+    }
 
     # 4 - Medical Records 
-    medical-records = { 
-      bucket_name = "mhs-medical-records-itba-cp-g1" 
-      objects = { 
-        mock-pdf-record = { 
-          key = "user1/medical-record.pdf"
+    medical-records = {
+      bucket_name = "mhs-medical-records-itba-cp-g1"
+      objects = {
+        mock-pdf-record = {
+          key    = "user1/medical-record.pdf"
           source = "../resources/docs/medical_record.pdf"
         }
-        mock-jpg-record = { 
-          key = "user1/radiografia-mano.jpg"
+        mock-jpg-record = {
+          key    = "user1/radiografia-mano.jpg"
           source = "../resources/images/radiografia-mano.jpg"
         }
-        
+
       }
-    } 
+    }
   }
-  
+
   mime_types = jsondecode(file("${local.path}/mime.json"))
 
   ################################################
@@ -95,15 +95,15 @@ locals {
   ################################################
   ## DynamoDB 
 
-  dynamodb = { 
-    users = { 
-      name           = "users-table" 
-      hash_key       = "user-id"
+  dynamodb = {
+    users = {
+      name     = "users-table"
+      hash_key = "user-id"
     }
 
-    appointments = { 
-      name           = "appointments-table"
-      hash_key       = "appointment-id"
+    appointments = {
+      name     = "appointments-table"
+      hash_key = "appointment-id"
     }
   }
 

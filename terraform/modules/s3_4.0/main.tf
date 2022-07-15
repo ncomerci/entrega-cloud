@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "this" {
 }
 
 resource "aws_s3_bucket_website_configuration" "website" {
-  count = var.is_website == true && length(split("www", var.bucket_name)) == 1 ? 1 : 0
+  count  = var.is_website == true && length(split("www", var.bucket_name)) == 1 ? 1 : 0
   bucket = aws_s3_bucket.this.id
 
   index_document {
@@ -21,14 +21,14 @@ resource "aws_s3_bucket_website_configuration" "website" {
 }
 
 resource "aws_s3_bucket_website_configuration" "www" {
-  count = var.is_website == true && length(split("www", var.bucket_name)) > 1 ? 1 : 0
+  count  = var.is_website == true && length(split("www", var.bucket_name)) > 1 ? 1 : 0
   bucket = aws_s3_bucket.this.id
 
   redirect_all_requests_to {
     protocol  = "http"
     host_name = var.website_name
   }
-} 
+}
 
 
 resource "aws_s3_bucket_policy" "this" {
@@ -40,14 +40,14 @@ resource "aws_s3_bucket_policy" "this" {
 
 
 resource "aws_s3_bucket_acl" "this" {
-  count = var.is_log == true ? 1 : 0 
+  count  = var.is_log == true ? 1 : 0
   bucket = aws_s3_bucket.this.id
   acl    = var.bucket_acl
 }
 
 resource "aws_s3_bucket_logging" "this" {
-  count = var.is_log == true ? 1 : 0 
-  bucket = var.logs_from    // webiste
+  count  = var.is_log == true ? 1 : 0
+  bucket = var.logs_from // webiste
 
   target_bucket = aws_s3_bucket.this.id // logs
   target_prefix = "log/"
@@ -60,6 +60,6 @@ resource "aws_s3_object" "this" {
   for_each = try(var.objects, {})
 
   bucket = aws_s3_bucket.this.id
-  key    = each.value.key  
+  key    = each.value.key
   source = each.value.source
 } 

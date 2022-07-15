@@ -4,7 +4,7 @@
 
 module "cloudfront" {
 
-  source          = "../modules/cloudfront"
+  source = "../modules/cloudfront"
 
   providers = {
     aws = aws.aws
