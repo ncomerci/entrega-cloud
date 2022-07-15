@@ -15,10 +15,12 @@ variable "table_hash_key" {
 variable "read_capacity" {
   type    = number
   default = 30
+  description = "Read Capacity"
 }
 
 variable "write_capacity" {
   type    = number
   default = 30
+  description = "Write Capacity"
 }
 

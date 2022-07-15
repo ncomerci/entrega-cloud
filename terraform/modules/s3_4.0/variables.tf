@@ -24,3 +24,30 @@ variable "mime_types" {
   description = "Mime types"
 
 }
+
+variable "is_website" {
+  type = bool
+  description = "If the bucket is a website bucket then contains = true, else false "
+  
+}
+
+variable "is_log" {
+  type = bool
+  description = "If the bucket is a logging bucket"
+}
+
+variable "logs_from" {
+  type = string 
+  description = "Name of the bucket to log from"  
+}
+
+variable "objects" {
+  type = map(any)
+  description = "Bucket objects"
+  default = {}  
+}
+
+variable "website_name" {
+  type = string 
+  description = "website name"  
+}
