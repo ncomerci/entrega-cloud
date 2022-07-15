@@ -7,12 +7,6 @@ variable "bucket_name" {
   description = "The name of the bucket. Must be less than or equal to 63 characters in length."
 }
 
-# variable "objects" {
-#   type        = map(any)
-#   description = ""
-#   default     = {}
-# }
-
 variable "block_public_access" {
   type        = bool
   default     = true
