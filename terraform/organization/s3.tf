@@ -16,6 +16,8 @@ module "s3" {
 
 resource "aws_s3_object" "this" {
 
+  provider      = aws.aws
+
   bucket        = module.s3.id
   key           = "index.html"
   content       = data.template_file.userdata.rendered
