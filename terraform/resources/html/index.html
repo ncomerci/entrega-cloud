@@ -12,6 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script type="text/javascript" src="assets/js/endpoints.js"></script>
 		<script>
 			function getMedicalRecords() {
 				var xhttp = new XMLHttpRequest();
@@ -21,7 +22,7 @@
 					}
 				};
 
-			xhttp.open("GET", "${ENDPOINT}/medical-records", true);
+			xhttp.open("GET", ENDPOINT + "/medical-records", true);
 			xhttp.send();   
 			}
 
@@ -33,7 +34,7 @@
 					}
 				};
 
-			xhttp.open("POST", "${ENDPOINT}/medical-records", true);
+			xhttp.open("POST", ENDPOINT + "/medical-records", true);
 			xhttp.send();   
 			}
 
@@ -45,7 +46,7 @@
 					}
 				};
 
-			xhttp.open("POST", "${ENDPOINT}/appointments", true);
+			xhttp.open("POST", ENDPOINT + "/appointments", true);
 			xhttp.send();   
 			}
 
@@ -63,7 +64,7 @@
 							<p class="major">
 								The saying “laughter is the best medicine” is believed to have originated. But it's more than a proverb. The power of laughter has long been recognized by both medical and spiritual experts</p>
 							<ul class="actions stacked">
-								<a class="button big wide smooth-scroll-middle" href="${COGNITO_ENDPOINT}">Sign Up</a>
+								<a class="button big wide smooth-scroll-middle" href=COGNITO_ENDPOINT>Sign Up</a>
 							</ul>            
 						</div>
 						<div class="image">
