@@ -20,10 +20,6 @@ resource "aws_vpc" "this" {
 
   tags = {
     name       = local.aws_vpc.tags.name
-    author     = module.global_settings.author
-    version    = module.global_settings.version
-    university = module.global_settings.university
-    subject    = module.global_settings.subject
   }
 }
 
@@ -36,15 +32,10 @@ resource "aws_subnet" "this" {
 
   tags = {
     name       = local.aws_subnet.tags.name
-    author     = module.global_settings.author
-    version    = module.global_settings.version
-    university = module.global_settings.university
-    subject    = module.global_settings.subject
   }
 }
 
 
-# TODO(para el final): Lambdas en VPC, accederian a S3 y DynamoDB por VPC endpoint 
 resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
 
