@@ -9,7 +9,3 @@ output "api_endpoint" {
 output "cognito_endpoint" {
   value = module.cognito.endpoint
 }
-
-output "endpoints" {
-  value = data.template_file.userdata.rendered
-}

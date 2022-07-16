@@ -10,7 +10,7 @@ resource "aws_cloudfront_distribution" "s3" {
   origin {
 
     domain_name = var.domain_name
-    origin_id   = local.s3_origin_id
+    origin_id   = var.s3_origin_id
 
     custom_origin_config {
       http_port              = "80"
@@ -23,7 +23,7 @@ resource "aws_cloudfront_distribution" "s3" {
   origin {
 
     domain_name = var.api_domain_name
-    origin_id   = local.api_origin_id
+    origin_id   = var.apigw_origin_id
     origin_path = "/${module.global_settings.stage_name}"
 
     custom_origin_config {
@@ -43,7 +43,7 @@ resource "aws_cloudfront_distribution" "s3" {
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3_origin_id
+    target_origin_id = var.s3_origin_id
 
     forwarded_values {
       query_string = false
@@ -68,7 +68,7 @@ resource "aws_cloudfront_distribution" "s3" {
 
   tags = {
     environment = module.global_settings.stage_name
-    name        = local.tags.name
+    name        = "Cloudfront"
   }
 
   viewer_certificate {
