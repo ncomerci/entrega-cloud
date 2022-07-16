@@ -14,6 +14,6 @@ locals {
   }
 
   tags = {
-    name                = "ClouWatch Alarm MHS"
+    name = "ClouWatch Alarm MHS"
   }
 }

@@ -5,7 +5,7 @@
 # We need to create it just one time, not inside foreach 
 resource "aws_security_group" "this" {
 
-  provider    = aws.aws
+  provider = aws.aws
 
   name        = "lambda-sg"
   description = "Generic Lambda Security Group"
