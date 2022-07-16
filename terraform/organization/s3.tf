@@ -26,7 +26,7 @@ resource "aws_s3_object" "this" {
 
   bucket        = module.s3["website"].id
   key           = "index.html"
-  content       = file("../resources/html/index.html")
+  content       = data.template_file.userdata.rendered
   content_type  = "text/html"
   storage_class = "STANDARD"
 }
@@ -47,14 +47,14 @@ resource "aws_s3_object" "frontend" {
   content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.value), null)
 }
 
-resource "aws_s3_object" "endpoints" {
-
-  provider      = aws.aws
-
-  bucket        = module.s3["website"].id
-  key           = "assets/js/endpoints.js"
-  content       = data.template_file.userdata.rendered
-  etag          = md5(data.template_file.userdata.rendered)
-  content_type  = "text/javascript"
-  storage_class = "STANDARD"
-}
+#resource "aws_s3_object" "endpoints" {
+#
+#  provider      = aws.aws
+#
+#  bucket        = module.s3["website"].id
+#  key           = "assets/js/endpoints.js"
+#  content       = data.template_file.userdata.rendered
+#  etag          = md5(data.template_file.userdata.rendered)
+#  content_type  = "text/javascript"
+#  storage_class = "STANDARD"
+#}

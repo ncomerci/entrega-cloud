@@ -13,7 +13,7 @@ data "aws_caller_identity" "current" {
 data "template_file" "userdata" {
 
   template = templatefile(
-    "../resources/html/assets/js/endpoints.js.tftpl", 
+    "../resources/html/index.html.tftpl", 
     { 
       ENDPOINT = "${module.apigw.invoke_url}", 
       COGNITO_ENDPOINT = "${module.cognito.endpoint}"
