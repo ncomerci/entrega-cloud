@@ -28,6 +28,6 @@ resource "aws_cloudwatch_metric_alarm" "this" {
   }
 
   tags = {
-    name       = local.tags.name
+    name = local.tags.name
   }
 }

@@ -23,11 +23,11 @@ variable "template_file_vars" {
 }
 
 variable "name" {
-  type = string 
+  type        = string
   description = "API GW Name"
 }
 
 variable "description" {
-  type = string 
+  type        = string
   description = "API GW description"
 }

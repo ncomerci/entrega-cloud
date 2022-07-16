@@ -52,7 +52,7 @@ resource "aws_wafv2_web_acl" "this" {
   }
 
   tags = {
-    name       = local.tags.name
+    name = local.tags.name
   }
 
   visibility_config {

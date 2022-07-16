@@ -14,7 +14,7 @@ resource "aws_api_gateway_rest_api" "this" {
   body = data.template_file.apigw-openapi.rendered
 
   tags = {
-    name      = var.name
+    name = var.name
   }
 }
 

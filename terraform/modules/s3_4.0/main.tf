@@ -55,9 +55,9 @@ resource "aws_s3_bucket_logging" "this" {
 resource "aws_s3_object" "this" {
   count = try(length(var.objects), [])
 
-  bucket = aws_s3_bucket.this.id
-  key    = var.objects[count.index].key
-  source = var.objects[count.index].source
-  etag   = var.objects[count.index].etag
-  content_type   = try(var.objects[count.index].content_type, "")
+  bucket       = aws_s3_bucket.this.id
+  key          = var.objects[count.index].key
+  source       = var.objects[count.index].source
+  etag         = var.objects[count.index].etag
+  content_type = try(var.objects[count.index].content_type, "")
 } 

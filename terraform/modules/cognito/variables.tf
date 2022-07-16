@@ -13,16 +13,16 @@ variable "aws_region_name" {
 }
 
 variable "user_pool_name" {
-  type = string
+  type        = string
   description = "User pool name"
 }
 
 variable "client_name" {
-  type = string
+  type        = string
   description = "Client name"
 }
 
 variable "domain_name" {
-  type = string
+  type        = string
   description = "Domain name"
 }

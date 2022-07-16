@@ -19,17 +19,17 @@ locals {
     website = {
       bucket_name = local.bucket_name
       is_website  = true
-      objects  =  [for file in fileset("../resources/html", "**/*.*"):
-        { 
-          key = file 
-          source = "../resources/html/${file}"
+      objects = [for file in fileset("../resources/html", "**/*.*") :
+        {
+          key          = file
+          source       = "../resources/html/${file}"
           etag         = filemd5("../resources/html/${file}")
           content_type = lookup(local.mime_types, regex("\\.[^.]+$", file), null)
 
         }
       ]
     }
-  
+
     # 2 - WWW Website
     www-website = {
       bucket_name     = "www.${local.bucket_name}"
@@ -48,15 +48,15 @@ locals {
     # 4 - Medical Records 
     medical-records = {
       bucket_name = "mhs-medical-records-itba-cp-g1"
-      objects = [ for record in fileset("../resources/medical-records", "**/*.*"):
+      objects = [for record in fileset("../resources/medical-records", "**/*.*") :
         {
           key    = "user1/${record}"
           source = "../resources/medical-records/${record}"
           etag   = filemd5("../resources/medical-records/${record}")
         }
-        ]
-      }
-    
+      ]
+    }
+
   }
 
   mime_types = jsondecode(file("${local.path}/mime.json"))
@@ -123,7 +123,7 @@ locals {
 
   ################################################
   ## API Gateway
-  apigateway = { 
+  apigateway = {
     name        = "AWSAPIGateway-MHS"
     description = "MHS Api Gateway"
   }

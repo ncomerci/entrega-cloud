@@ -19,7 +19,7 @@ resource "aws_vpc" "this" {
   cidr_block = var.vpc_cidr
 
   tags = {
-    name       = local.aws_vpc.tags.name
+    name = local.aws_vpc.tags.name
   }
 }
 
@@ -31,7 +31,7 @@ resource "aws_subnet" "this" {
   cidr_block        = local.private_subnets[count.index]
 
   tags = {
-    name       = local.aws_subnet.tags.name
+    name = local.aws_subnet.tags.name
   }
 }
 
@@ -39,4 +39,4 @@ resource "aws_subnet" "this" {
 resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
 
-} 
+}
