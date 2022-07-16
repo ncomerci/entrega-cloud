@@ -50,22 +50,14 @@ resource "aws_s3_bucket_logging" "this" {
   target_prefix = "log/"
 }
 
-# Mock data
+# Upload objects 
 
 resource "aws_s3_object" "this" {
-  for_each = try(var.objects,{})
+  count = try(length(var.objects), [])
 
   bucket = aws_s3_bucket.this.id
-  key    = each.value.key
-  source = each.value.source
-} 
-
-resource "aws_s3_object" "frontend" {
-  count = try(length(var.fileset), [])
-
-  bucket = aws_s3_bucket.this.id
-  key    = var.fileset[count.index].key
-  source = var.fileset[count.index].source
-  etag   = var.fileset[count.index].etag
-  content_type   = var.fileset[count.index].content_type
+  key    = var.objects[count.index].key
+  source = var.objects[count.index].source
+  etag   = var.objects[count.index].etag
+  content_type   = try(var.objects[count.index].content_type, "")
 } 

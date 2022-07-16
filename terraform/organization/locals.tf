@@ -19,7 +19,7 @@ locals {
     website = {
       bucket_name = local.bucket_name
       is_website  = true
-      fileset  =  [for file in fileset("../resources/html", "**/*.*"):
+      objects  =  [for file in fileset("../resources/html", "**/*.*"):
         { 
           key = file 
           source = "../resources/html/${file}"
@@ -48,18 +48,15 @@ locals {
     # 4 - Medical Records 
     medical-records = {
       bucket_name = "mhs-medical-records-itba-cp-g1"
-      objects = {
-        mock-pdf-record = {
-          key    = "user1/medical-record.pdf"
-          source = "../resources/docs/medical_record.pdf"
+      objects = [ for record in fileset("../resources/medical-records", "**/*.*"):
+        {
+          key    = "user1/${record}"
+          source = "../resources/medical-records/${record}"
+          etag   = filemd5("../resources/medical-records/${record}")
         }
-        mock-jpg-record = {
-          key    = "user1/radiografia-mano.jpg"
-          source = "../resources/images/radiografia-mano.jpg"
-        }
-
+        ]
       }
-    }
+    
   }
 
   mime_types = jsondecode(file("${local.path}/mime.json"))

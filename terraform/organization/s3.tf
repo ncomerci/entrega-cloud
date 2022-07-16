@@ -15,10 +15,9 @@ module "s3" {
   is_website  = try(each.value.is_website, false)
   is_log      = try(each.value.is_log, false)
   logs_from   = try(each.value.logs_from, "")
-  objects     = try(each.value.objects, {})
+  objects     = try(each.value.objects, [])
   website_name = local.bucket_name
   mime_types  = local.mime_types
-  fileset = try(each.value.fileset, [])
 }
 
 resource "aws_s3_object" "this" {

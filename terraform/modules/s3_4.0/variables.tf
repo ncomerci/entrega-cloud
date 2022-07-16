@@ -42,17 +42,12 @@ variable "logs_from" {
 }
 
 variable "objects" {
-  type        = map(any)
+  type        = list(any)
   description = "Bucket objects"
-  default     = {}
+  default     = []
 }
 
 variable "website_name" {
   type        = string
   description = "website name"
-}
-
-variable "fileset" {
-  type = list(any)
-  description = "frontend files "
 }
