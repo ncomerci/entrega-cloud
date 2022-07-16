@@ -2,6 +2,10 @@
 # Amazon VPC
 # ---------------------------------------------------------------------------
 
+module "global_settings" {
+  source = "../global"
+}
+
 data "aws_availability_zones" "this" {
   state = "available"
   filter { ## Only AZs
@@ -15,11 +19,11 @@ resource "aws_vpc" "this" {
   cidr_block = var.vpc_cidr
 
   tags = {
-    name       = "VPC MHS"
-    author     = "MHS Grupo 1"
-    version    = 1
-    university = "ITBA"
-    subject    = "Cloud Computing"
+    name       = local.aws_vpc.tags.name
+    author     = module.global_settings.author
+    version    = module.global_settings.version
+    university = module.global_settings.university
+    subject    = module.global_settings.subject
   }
 }
 
@@ -31,11 +35,11 @@ resource "aws_subnet" "this" {
   cidr_block        = local.private_subnets[count.index]
 
   tags = {
-    name       = "Subnet MHS"
-    author     = "MHS Grupo 1"
-    version    = 1
-    university = "ITBA"
-    subject    = "Cloud Computing"
+    name       = local.aws_subnet.tags.name
+    author     = module.global_settings.author
+    version    = module.global_settings.version
+    university = module.global_settings.university
+    subject    = module.global_settings.subject
   }
 }
 

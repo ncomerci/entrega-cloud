@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------
 
 resource "aws_cognito_user_pool" "this" {
-  name = local.pool_name
+  name = var.user_pool_name
 
   alias_attributes = [
     "email",
@@ -55,7 +55,7 @@ resource "aws_cognito_user_pool" "this" {
 }
 
 resource "aws_cognito_user_pool_client" "this" {
-  name         = local.client_name
+  name         = var.client_name
   user_pool_id = aws_cognito_user_pool.this.id
 
   callback_urls = ["https://${var.redirect_uri}/"]
@@ -78,10 +78,9 @@ resource "aws_cognito_user_pool_client" "this" {
 
   write_attributes = ["address", "birthdate", "email", "family_name", "gender", "given_name", "locale", "middle_name", "name", "nickname", "phone_number", "picture", "preferred_username", "profile", "updated_at", "website", "zoneinfo"]
 
-
 }
 
 resource "aws_cognito_user_pool_domain" "this" {
-  domain       = local.domain_name
+  domain       = var.domain_name
   user_pool_id = aws_cognito_user_pool.this.id
 }
