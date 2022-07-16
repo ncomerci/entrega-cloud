@@ -8,7 +8,8 @@ module "apigw" {
   providers = {
     aws = aws.aws
   }
-
+  name            = local.apigateway.name
+  description     = local.apigateway.description
   aws_region_name = data.aws_region.current.name
   account_id      = data.aws_caller_identity.current.account_id
 

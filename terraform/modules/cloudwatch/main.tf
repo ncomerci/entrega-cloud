@@ -29,9 +29,5 @@ resource "aws_cloudwatch_metric_alarm" "this" {
 
   tags = {
     name       = local.tags.name
-    author     = module.global_settings.author
-    version    = module.global_settings.version
-    university = module.global_settings.university
-    subject    = module.global_settings.subject
   }
 }

@@ -8,20 +8,15 @@ module "global_settings" {
 
 resource "aws_api_gateway_rest_api" "this" {
 
-  name        = local.name
-  description = local.description
+  name        = var.name
+  description = var.description
 
   body = data.template_file.apigw-openapi.rendered
 
   tags = {
-    name       = local.tags.name
-    author     = module.global_settings.author
-    version    = module.global_settings.version
-    university = module.global_settings.university
-    subject    = module.global_settings.subject
+    name      = var.name
   }
 }
-
 
 resource "aws_api_gateway_deployment" "this" {
 

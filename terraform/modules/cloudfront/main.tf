@@ -69,10 +69,6 @@ resource "aws_cloudfront_distribution" "s3" {
   tags = {
     environment = module.global_settings.stage_name
     name        = local.tags.name
-    author      = module.global_settings.author
-    version     = module.global_settings.version
-    university  = module.global_settings.university
-    subject     = module.global_settings.subject
   }
 
   viewer_certificate {

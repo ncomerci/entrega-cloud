@@ -21,3 +21,13 @@ variable "template_file_vars" {
   type        = map(string)
   description = "The OpenAPI file vars"
 }
+
+variable "name" {
+  type = string 
+  description = "API GW Name"
+}
+
+variable "description" {
+  type = string 
+  description = "API GW description"
+}

@@ -115,4 +115,11 @@ locals {
     client_name = "mhs-client"
   }
 
+  ################################################
+  ## API Gateway
+  apigateway = { 
+    name        = "AWSAPIGateway-MHS"
+    description = "MHS Api Gateway"
+  }
+
 }
