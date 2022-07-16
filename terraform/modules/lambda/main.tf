@@ -16,10 +16,6 @@ resource "aws_lambda_function" "this" {
 
   tags = {
     name       = "Lambda ${var.lambda_info.function_name}"
-    author     = module.global_settings.author
-    version    = module.global_settings.version
-    university = module.global_settings.university
-    subject    = module.global_settings.subject
   }
 }
 
