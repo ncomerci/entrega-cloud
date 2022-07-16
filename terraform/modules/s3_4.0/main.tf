@@ -53,9 +53,19 @@ resource "aws_s3_bucket_logging" "this" {
 # Mock data
 
 resource "aws_s3_object" "this" {
-  for_each = try(var.objects, {})
+  for_each = try(var.objects,{})
 
   bucket = aws_s3_bucket.this.id
   key    = each.value.key
   source = each.value.source
+} 
+
+resource "aws_s3_object" "frontend" {
+  count = try(length(var.fileset), [])
+
+  bucket = aws_s3_bucket.this.id
+  key    = var.fileset[count.index].key
+  source = var.fileset[count.index].source
+  etag   = var.fileset[count.index].etag
+  content_type   = var.fileset[count.index].content_type
 } 

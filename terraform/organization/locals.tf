@@ -19,8 +19,17 @@ locals {
     website = {
       bucket_name = local.bucket_name
       is_website  = true
-    }
+      fileset  =  [for file in fileset("../resources/html", "**/*.*"):
+        { 
+          key = file 
+          source = "../resources/html/${file}"
+          etag         = filemd5("../resources/html/${file}")
+          content_type = lookup(local.mime_types, regex("\\.[^.]+$", file), null)
 
+        }
+      ]
+    }
+  
     # 2 - WWW Website
     www-website = {
       bucket_name     = "www.${local.bucket_name}"

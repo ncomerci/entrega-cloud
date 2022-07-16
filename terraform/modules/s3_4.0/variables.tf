@@ -51,3 +51,8 @@ variable "website_name" {
   type        = string
   description = "website name"
 }
+
+variable "fileset" {
+  type = list(any)
+  description = "frontend files "
+}
