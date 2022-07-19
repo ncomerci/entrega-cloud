@@ -22,23 +22,24 @@ variable "bucket_acl" {
 variable "mime_types" {
   type        = map(any)
   description = "Mime types"
-
 }
 
 variable "is_website" {
   type        = bool
   description = "If the bucket is a website bucket then contains = true, else false "
-
+  default     = false
 }
 
 variable "is_log" {
   type        = bool
   description = "If the bucket is a logging bucket"
+  default     = false
 }
 
 variable "logs_from" {
   type        = string
   description = "Name of the bucket to log from"
+  default     = ""
 }
 
 variable "objects" {
