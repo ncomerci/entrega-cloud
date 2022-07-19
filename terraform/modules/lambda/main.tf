@@ -2,10 +2,6 @@
 # Amazon Lambda
 # ------------------------------------------------------------------------------
 
-module "global_settings" {
-  source = "../global"
-}
-
 resource "aws_lambda_function" "this" {
 
   filename      = var.lambda_info.filename
@@ -18,10 +14,6 @@ resource "aws_lambda_function" "this" {
     name = "Lambda ${var.lambda_info.function_name}"
   }
 
-  vpc_config {
-    subnet_ids         = var.subnet_ids
-    security_group_ids = var.sg_ids
-  }
 }
 
 resource "aws_lambda_permission" "this" {

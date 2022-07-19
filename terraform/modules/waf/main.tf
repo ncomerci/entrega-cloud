@@ -46,7 +46,7 @@ resource "aws_wafv2_web_acl" "this" {
 
     visibility_config {
       cloudwatch_metrics_enabled = false
-      metric_name                = "friendly-rule-metric-name"
+      metric_name                = "owasp-rule-metric"
       sampled_requests_enabled   = false
     }
   }
@@ -57,7 +57,7 @@ resource "aws_wafv2_web_acl" "this" {
 
   visibility_config {
     cloudwatch_metrics_enabled = false
-    metric_name                = "friendly-metric-name"
+    metric_name                = "owasp-metric"
     sampled_requests_enabled   = false
   }
 }

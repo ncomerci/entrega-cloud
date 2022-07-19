@@ -15,17 +15,3 @@ data "aws_iam_policy_document" "this" {
     resources = ["${aws_s3_bucket.this.arn}/*"]
   }
 }
-
-# data "aws_iam_policy_document" "www" {
-
-#   statement {
-#     sid     = "PublicReadGetObject"
-#     effect  = "Allow"
-#     actions = ["s3:GetObject"]
-#     principals {
-#       type        = "AWS"
-#       identifiers = ["*"]
-#     }
-#     resources = ["${aws_s3_bucket.www.arn}/*"]
-#   }
-# }

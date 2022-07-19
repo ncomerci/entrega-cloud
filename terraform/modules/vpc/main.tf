@@ -2,10 +2,6 @@
 # Amazon VPC
 # ---------------------------------------------------------------------------
 
-module "global_settings" {
-  source = "../global"
-}
-
 data "aws_availability_zones" "this" {
   state = "available"
   filter { ## Only AZs
@@ -45,4 +41,5 @@ resource "aws_vpc_endpoint" "this" {
   vpc_id            = aws_vpc.this.id
   service_name      = each.value.service_name
   vpc_endpoint_type = "Gateway"
+  route_table_ids   = [aws_vpc.this.default_route_table_id]
 }

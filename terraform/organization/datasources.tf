@@ -19,11 +19,3 @@ data "template_file" "userdata" {
       COGNITO_ENDPOINT = "${module.cognito.endpoint}"
   })
 }
-
-# data "template_file" "userdata" {
-#   template = file("${local.path}/html/index.html")
-#   vars = {
-#     ENDPOINT         = "${module.apigw.invoke_url}"
-#     COGNITO_ENDPOINT = "${module.cognito.endpoint}"
-#   }
-# }
