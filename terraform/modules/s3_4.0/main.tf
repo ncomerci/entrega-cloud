@@ -21,7 +21,7 @@ resource "aws_s3_bucket_website_configuration" "this" {
   dynamic "error_document" {
     for_each = try(var.website_config.error_document, {})
     content {
-      key = error_document.value #error_document.value[error_document]
+      key = error_document.value
     }
   }
 
@@ -90,5 +90,3 @@ resource "aws_s3_object" "frontend" {
   content_type  = "text/html"
   storage_class = "STANDARD"
 }
-
-
