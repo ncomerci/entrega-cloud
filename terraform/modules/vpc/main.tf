@@ -35,8 +35,14 @@ resource "aws_subnet" "this" {
   }
 }
 
-
 resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
+}
 
+resource "aws_vpc_endpoint" "this" {
+  for_each = var.vpc_endpoints
+
+  vpc_id            = aws_vpc.this.id
+  service_name      = each.value.service_name
+  vpc_endpoint_type = "Gateway"
 }

@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1415115909152",
+    "Statement": [
+        {
+            "Sid": "Access-to-specific-VPCE-only",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::mhs-medical-records-itba-cp-g1/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:sourceVpce": "ENDPOINT_ID"
+                }
+            }
+        }
+    ]
+}

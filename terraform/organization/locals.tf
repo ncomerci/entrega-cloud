@@ -7,6 +7,16 @@ locals {
   ## VPC
   vpc_cidr = "10.0.0.0/16"
   az_total = 2
+  vpc_endpoints = {
+    s3 = {
+      service_name  = "com.amazonaws.us-east-1.s3"
+      endpoint_name = "mhs-s3-vpc-endpoint"
+    }
+    dynamodb = {
+      service_name  = "com.amazonaws.us-east-1.dynamodb"
+      endpoint_name = "mhs-dynamodb-vpc-endpoint"
+    }
+  }
 
   ################################################
   ## S3
