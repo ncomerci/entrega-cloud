@@ -14,5 +14,5 @@ output "arn" {
 
 output "website_endpoint" {
   description = "The website endpoint, if the bucket is configured with a website. If not, this will be an empty string"
-  value       = length(aws_s3_bucket_website_configuration.www) > 0 ? aws_s3_bucket_website_configuration.www[0].website_endpoint : ""
+  value       = length(aws_s3_bucket_website_configuration.this) > 0 ? aws_s3_bucket_website_configuration.this[0].website_endpoint : ""
 }

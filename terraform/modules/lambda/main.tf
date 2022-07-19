@@ -15,7 +15,7 @@ resource "aws_lambda_function" "this" {
   runtime       = "python3.9"
 
   tags = {
-    name       = "Lambda ${var.lambda_info.function_name}"
+    name = "Lambda ${var.lambda_info.function_name}"
   }
 }
 

@@ -28,6 +28,11 @@ locals {
 
         }
       ]
+      website_config = {
+        index_document = ["index.html"]
+        error_document = ["error.html"]
+      }
+
     }
 
     # 2 - WWW Website
@@ -35,14 +40,18 @@ locals {
       bucket_name     = "www.${local.bucket_name}"
       count_condition = "web"
       is_website      = true
+      website_config = {
+        redirect = ["redirect"]
+      }
     }
 
     # 3 - Logs
     logs = {
-      bucket_name = "mhs-logs-itba-cp-g1"
-      bucket_acl  = "log-delivery-write"
-      is_log      = true
-      logs_from   = local.bucket_name
+      bucket_name    = "mhs-logs-itba-cp-g1"
+      bucket_acl     = "log-delivery-write"
+      is_log         = true
+      logs_from      = local.bucket_name
+      website_config = {}
     }
 
     # 4 - Medical Records 
@@ -55,6 +64,8 @@ locals {
           etag   = filemd5("../resources/medical-records/${record}")
         }
       ]
+      website_config = {}
+      encrypt        = true
     }
 
   }

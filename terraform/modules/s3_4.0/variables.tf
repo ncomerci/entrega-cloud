@@ -51,3 +51,21 @@ variable "website_name" {
   type        = string
   description = "website name"
 }
+
+variable "website_config" {
+  type        = map(any)
+  description = "Website configuration"
+  default     = {}
+}
+
+variable "template_file" {
+  type        = any
+  description = "index.html"
+  default     = {}
+}
+
+variable "encrypt" {
+  type        = bool
+  description = "Encrypted bucket with AWS managed key"
+  default     = false
+}
