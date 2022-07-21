@@ -31,3 +31,11 @@ terraform init
 terraform validate
 terraform plan 
 terraforom apply 
+```
+
+### 3. Arquitectura 
+Arquitectura propuesta
+![Arquitectura propuesta](./architecture/architecture.png)
+
+Arquitectura deployada con las restricciones de Academy
+![Arquitectura restricciones](./architecture/architecture_restrictions.jpeg)
